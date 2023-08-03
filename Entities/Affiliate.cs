@@ -27,7 +27,9 @@ namespace Entities
 
             stringBuilder.AppendLine($"Entidad: {entity}");
             stringBuilder.AppendLine($"Nombre: {name}");
-            stringBuilder.AppendLine($"Nº Afiliado: {number}/{}");
+            stringBuilder.AppendLine($"Nº Afiliado: {number}/{intern}");
+
+            return stringBuilder.ToString();
         }
 
 

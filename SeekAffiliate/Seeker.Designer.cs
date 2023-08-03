@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            richTextBox1 = new RichTextBox();
+            rtb_affiliate = new RichTextBox();
             txbNameSeeked = new TextBox();
             txbDniSeeked = new TextBox();
             txbNAffiliateSeeked = new TextBox();
@@ -37,13 +37,13 @@
             label1 = new Label();
             SuspendLayout();
             // 
-            // richTextBox1
+            // rtb_affiliate
             // 
-            richTextBox1.Location = new Point(21, 22);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(344, 402);
-            richTextBox1.TabIndex = 0;
-            richTextBox1.Text = "";
+            rtb_affiliate.Location = new Point(21, 22);
+            rtb_affiliate.Name = "rtb_affiliate";
+            rtb_affiliate.Size = new Size(344, 402);
+            rtb_affiliate.TabIndex = 0;
+            rtb_affiliate.Text = "";
             // 
             // txbNameSeeked
             // 
@@ -84,6 +84,7 @@
             btnSearch.TabIndex = 4;
             btnSearch.Text = "Buscar";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // btnCancelSearch
             // 
@@ -94,6 +95,7 @@
             btnCancelSearch.TabIndex = 5;
             btnCancelSearch.Text = "Salir";
             btnCancelSearch.UseVisualStyleBackColor = true;
+            btnCancelSearch.Click += btnCancelSearch_Click;
             // 
             // label1
             // 
@@ -118,7 +120,7 @@
             Controls.Add(txbNAffiliateSeeked);
             Controls.Add(txbDniSeeked);
             Controls.Add(txbNameSeeked);
-            Controls.Add(richTextBox1);
+            Controls.Add(rtb_affiliate);
             Name = "Seeker";
             Text = "Seeker";
             ResumeLayout(false);
@@ -127,7 +129,7 @@
 
         #endregion
 
-        private RichTextBox richTextBox1;
+        private RichTextBox rtb_affiliate;
         private TextBox txbNameSeeked;
         private TextBox txbDniSeeked;
         private TextBox txbNAffiliateSeeked;

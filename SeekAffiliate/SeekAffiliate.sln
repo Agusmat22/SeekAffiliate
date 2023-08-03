@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeekAffiliate", "SeekAffiliate.csproj", "{BC75EF0C-9DC9-4C56-B586-C2F6C620F7FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeekAffiliate", "SeekAffiliate.csproj", "{BC75EF0C-9DC9-4C56-B586-C2F6C620F7FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "..\Entities\Entities.csproj", "{79615318-FAEB-483E-A544-E34969DC470C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "..\Entities\Entities.csproj", "{79615318-FAEB-483E-A544-E34969DC470C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
