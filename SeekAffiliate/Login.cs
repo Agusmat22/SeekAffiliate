@@ -21,7 +21,7 @@ namespace SeekAffiliate
             {
                 if (userJoined.ToLower() == "agusmat" && passJoined.ToLower() == "12345")
                 {
-                    //Inicializo el objeto de la interfaz menu
+                    //inicializo el objeto de la interfaz menu
                     MainMenu mainMenu = new MainMenu();
                     //abro el menu
                     mainMenu.Show();
