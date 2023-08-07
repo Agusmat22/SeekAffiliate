@@ -6,12 +6,12 @@ namespace Entities
     {
         private string name;
         private string entity;
-        private long number;
+        private string number;
         private int intern;
         private string typeDocument;
-        private long dni;
+        private string dni;
 
-        public Affiliate(string name,string entity,int intern, string typeDocument,long dni,long number)
+        public Affiliate(string name,string entity,int intern, string typeDocument,string dni,string number)
         {
             this.name = name;
             this.entity = entity;
@@ -27,9 +27,26 @@ namespace Entities
 
             stringBuilder.AppendLine($"Entidad: {entity}");
             stringBuilder.AppendLine($"Nombre: {name}");
+            stringBuilder.AppendLine($"Dni: {dni}");
             stringBuilder.AppendLine($"Nº Afiliado: {number}/{intern}");
 
             return stringBuilder.ToString();
+        }
+
+
+        public string GetName
+        {
+            get { return name; }
+        }
+
+        public string GetNumber
+        {
+            get { return number; }
+        }
+
+        public string GetDni
+        {
+            get { return dni; }
         }
 
 

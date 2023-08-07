@@ -8,15 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-//using Library;
+using Libraries;
+
+using CsvHelper;
+using Entities;
+using System.Text.RegularExpressions;
+using System.Data.SQLite;
+using System.Reflection.Metadata;
 
 namespace SeekAffiliate
 {
     public partial class Seeker : Form
     {
+        private List<Affiliate> affiliateList;
+
         public Seeker()
         {
             InitializeComponent();
+
         }
 
         private void btnCancelSearch_Click(object sender, EventArgs e)
@@ -27,50 +36,48 @@ namespace SeekAffiliate
         //REVISAR ESTE BOTON, ACA ENCUENTRO EL AFILIADO EN EL CSV
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            //ManipulateFile.GetListAffiliate();
+            string data = this.txbSeeked.Text;
+            string dataType = "";
 
-            try
+            if (this.rdbName.Checked == true)
             {
-                using (StreamReader reader = new StreamReader("C:\\Users\\usuario\\Desktop\\afi\\pruebaPrest.csv"))
+
+                dataType = "name";
+            }
+            else if (this.rdbNumber.Checked == true)
+            {
+                dataType = "number";
+            }
+            else if (this.rdbDni.Checked == true)
+            {
+                dataType = "dni";
+
+            }
+
+
+
+            affiliateList = Functions.GetAffiliate(data, dataType);
+
+            if (affiliateList.Count > 0)
+            {
+                rtb_affiliate.Text = "";
+                foreach (Affiliate affiliate in affiliateList)
                 {
-                    /*
-                    // Leer la línea de encabezado (columnas)
-                    string headerLine = reader.ReadLine();
-                    string[] headers = headerLine.Split(','); */
 
-                    // Leer y procesar las líneas de datos
-                    while (!reader.EndOfStream)
-                    {
-                        //Leo la primera linea
-                        string dataLine = reader.ReadLine();
-                        //la spliteo y entre cada ; la convierto en sub listas cada elemento
-                        string[] data = dataLine.Split(';');
-
-                        // Acceder a los valores individuales usando los encabezados
-                        string entity = data[0];
-                        //int edad = int.Parse(data[1]);
-                        string numberAffialite = data[2];
-
-                        string completeName = $"{data[4]} {data[5]}";
-
-                        // Realizar manipulaciones con los datos (por ejemplo, almacenarlos en una lista, procesarlos, etc.)
-                        // Para este ejemplo, simplemente imprimimos los datos
-                        //MessageBox.Show($"Entidad: {entity}\nNumero de afiliado: {numberAffialite}\nNombre: {completeName}");
-
-                        string afiliadoMostrar = $"Entidad: {entity}\nNumero de afiliado: {numberAffialite}\nNombre: {completeName}\n\n\n";
-                        this.rtb_affiliate.Text += afiliadoMostrar;
-
-                    }
+                    rtb_affiliate.Text += affiliate.Mostrar() + "\n\n";
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Error al leer el archivo: {ex.Message}");
-
+                MessageBox.Show("No se encontro al afiliado");
             }
 
 
-            Console.WriteLine("holaaaa");
+        }
+
+        private void Seeker_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

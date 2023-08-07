@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Libraries;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,6 +29,12 @@ namespace SeekAffiliate
         {
             //cierro definitivamente la APP
             Application.Exit();
+        }
+
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+            //cargo la lista de afiliados en el sistema por unica vez
+            Functions.ChargeAffiliateList();
         }
     }
 }

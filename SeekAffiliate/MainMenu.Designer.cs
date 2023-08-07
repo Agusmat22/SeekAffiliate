@@ -74,7 +74,7 @@
             // afiliadoToolStripMenuItem1
             // 
             afiliadoToolStripMenuItem1.Name = "afiliadoToolStripMenuItem1";
-            afiliadoToolStripMenuItem1.Size = new Size(180, 22);
+            afiliadoToolStripMenuItem1.Size = new Size(120, 22);
             afiliadoToolStripMenuItem1.Text = "Afiliado";
             afiliadoToolStripMenuItem1.Click += afiliadoToolStripMenuItem1_Click;
             // 
@@ -89,6 +89,7 @@
             Name = "MainMenu";
             Text = "MainMenu";
             FormClosing += MainMenu_FormClosing;
+            Load += MainMenu_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
