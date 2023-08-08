@@ -34,7 +34,11 @@ namespace SeekAffiliate
         private void MainMenu_Load(object sender, EventArgs e)
         {
             //cargo la lista de afiliados en el sistema por unica vez
-            Functions.ChargeAffiliateList();
+            //carpeta pc home = "C:\\Users\\Lisandro\\Desktop\\App Buscador\\afiMaestro.csv"
+            string pc1 = "C:\\Users\\Lisandro\\Desktop\\App Buscador\\afiMaestro.csv";
+            string pcJob = "C:\\Users\\usuario\\Desktop\\afi\\mdaPrueba.csv";
+
+            Functions.ChargeAffiliateList(pcJob);
         }
 
         private void afiliadoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -42,7 +46,23 @@ namespace SeekAffiliate
             Register windowsRegister = new Register();
 
             //creo un dialog para saber el resultado de la operacion despues
-            DialogResult dialogResult =  windowsRegister.ShowDialog();
+            DialogResult dialogResult = windowsRegister.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                MessageBox.Show("Afiliado guardado correctamente");
+
+            }
+            else if (dialogResult == DialogResult.Abort)
+            {
+                MessageBox.Show("Error al guardar el afiliado");
+            }
+            else if (dialogResult == DialogResult.Cancel)
+            {
+                MessageBox.Show("Registro cancelado");
+            }
+
+
 
         }
     }

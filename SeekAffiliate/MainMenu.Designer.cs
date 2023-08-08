@@ -34,13 +34,15 @@
             afiliadoToolStripMenuItem = new ToolStripMenuItem();
             buscarToolStripMenuItem = new ToolStripMenuItem();
             afiliadoToolStripMenuItem1 = new ToolStripMenuItem();
+            label1 = new Label();
+            estadisticasToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
             menuStrip1.BackColor = Color.FromArgb(64, 64, 64);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { agregarToolStripMenuItem, buscarToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { agregarToolStripMenuItem, buscarToolStripMenuItem, estadisticasToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 25);
@@ -59,7 +61,7 @@
             // afiliadoToolStripMenuItem
             // 
             afiliadoToolStripMenuItem.Name = "afiliadoToolStripMenuItem";
-            afiliadoToolStripMenuItem.Size = new Size(180, 22);
+            afiliadoToolStripMenuItem.Size = new Size(120, 22);
             afiliadoToolStripMenuItem.Text = "Afiliado";
             afiliadoToolStripMenuItem.Click += afiliadoToolStripMenuItem_Click;
             // 
@@ -75,9 +77,28 @@
             // afiliadoToolStripMenuItem1
             // 
             afiliadoToolStripMenuItem1.Name = "afiliadoToolStripMenuItem1";
-            afiliadoToolStripMenuItem1.Size = new Size(120, 22);
+            afiliadoToolStripMenuItem1.Size = new Size(180, 22);
             afiliadoToolStripMenuItem1.Text = "Afiliado";
             afiliadoToolStripMenuItem1.Click += afiliadoToolStripMenuItem1_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe Print", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.SaddleBrown;
+            label1.Location = new Point(225, 55);
+            label1.Name = "label1";
+            label1.Size = new Size(339, 65);
+            label1.TabIndex = 5;
+            label1.Text = "Gestion Afiliados";
+            // 
+            // estadisticasToolStripMenuItem
+            // 
+            estadisticasToolStripMenuItem.ForeColor = SystemColors.ControlLightLight;
+            estadisticasToolStripMenuItem.Name = "estadisticasToolStripMenuItem";
+            estadisticasToolStripMenuItem.Size = new Size(79, 21);
+            estadisticasToolStripMenuItem.Text = "Estadisticas";
             // 
             // MainMenu
             // 
@@ -85,6 +106,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "MainMenu";
@@ -104,5 +126,7 @@
         private ToolStripMenuItem afiliadoToolStripMenuItem;
         private ToolStripMenuItem buscarToolStripMenuItem;
         private ToolStripMenuItem afiliadoToolStripMenuItem1;
+        private ToolStripMenuItem estadisticasToolStripMenuItem;
+        private Label label1;
     }
 }

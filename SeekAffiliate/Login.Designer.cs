@@ -39,7 +39,7 @@
             // 
             txbUser.Cursor = Cursors.IBeam;
             txbUser.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txbUser.Location = new Point(258, 145);
+            txbUser.Location = new Point(262, 155);
             txbUser.Name = "txbUser";
             txbUser.PlaceholderText = "Usuario";
             txbUser.Size = new Size(260, 29);
@@ -50,7 +50,7 @@
             // 
             txbPassword.Cursor = Cursors.IBeam;
             txbPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txbPassword.Location = new Point(258, 228);
+            txbPassword.Location = new Point(262, 238);
             txbPassword.Name = "txbPassword";
             txbPassword.PasswordChar = '*';
             txbPassword.PlaceholderText = "Clave";
@@ -63,7 +63,7 @@
             btnJoin.Cursor = Cursors.Hand;
             btnJoin.FlatAppearance.BorderColor = Color.Black;
             btnJoin.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnJoin.Location = new Point(343, 309);
+            btnJoin.Location = new Point(347, 319);
             btnJoin.Name = "btnJoin";
             btnJoin.Size = new Size(95, 31);
             btnJoin.TabIndex = 3;
@@ -77,11 +77,11 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe Print", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.SaddleBrown;
-            label1.Location = new Point(200, 29);
+            label1.Location = new Point(222, 44);
             label1.Name = "label1";
-            label1.Size = new Size(373, 65);
+            label1.Size = new Size(339, 65);
             label1.TabIndex = 4;
-            label1.Text = "Buscador Afiliados";
+            label1.Text = "Gestion Afiliados";
             // 
             // Login
             // 

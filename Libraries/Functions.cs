@@ -23,10 +23,10 @@ namespace Libraries
         }
 
         //Esta funcion lee el archivo csv y lo retorna en una lista
-        public static void ChargeAffiliateList()
+        public static void ChargeAffiliateList(string pathFile)
         {
             
-                using (StreamReader reader = new StreamReader("C:\\Users\\Lisandro\\Desktop\\App Buscador\\afiMaestro.csv"))
+                using (StreamReader reader = new StreamReader(pathFile))
                 {
 
 
@@ -145,13 +145,13 @@ namespace Libraries
 
         }
         
-        public static bool DataSaveAffiliate(string name, string entity, int intern, string typeDocument, string dni, string number,string filePath)
+        public static bool DataSaveAffiliate(string name,string surname, string entity, int intern, TypeDu typeDocument, string dni, string number,string filePath)
         {
             try
             {
                 using (StreamWriter writer = new StreamWriter(filePath,true))
                 {
-                    writer.WriteLine($"99;{entity};{number};{intern};{name};{name};'';'';'';'';'';'';{typeDocument};{dni};"); 
+                    writer.WriteLine($"99;{entity};{number};{intern};{surname};{name};'';'';'';'';'';'';{typeDocument};{dni};"); 
                 }
                 return true;
             } 

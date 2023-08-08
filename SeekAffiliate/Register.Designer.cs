@@ -36,6 +36,7 @@
             cmbTypeDu = new ComboBox();
             btnSaveRegister = new Button();
             btnCancelRegister = new Button();
+            txbSurnameRegister = new TextBox();
             SuspendLayout();
             // 
             // txbNameRegister
@@ -44,7 +45,7 @@
             txbNameRegister.Location = new Point(65, 63);
             txbNameRegister.Name = "txbNameRegister";
             txbNameRegister.PlaceholderText = "Nombre";
-            txbNameRegister.Size = new Size(274, 27);
+            txbNameRegister.Size = new Size(129, 27);
             txbNameRegister.TabIndex = 0;
             txbNameRegister.TextAlign = HorizontalAlignment.Center;
             // 
@@ -120,11 +121,22 @@
             btnCancelRegister.Text = "Cancelar";
             btnCancelRegister.UseVisualStyleBackColor = true;
             // 
+            // txbSurnameRegister
+            // 
+            txbSurnameRegister.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txbSurnameRegister.Location = new Point(210, 63);
+            txbSurnameRegister.Name = "txbSurnameRegister";
+            txbSurnameRegister.PlaceholderText = "Apellido";
+            txbSurnameRegister.Size = new Size(129, 27);
+            txbSurnameRegister.TabIndex = 9;
+            txbSurnameRegister.TextAlign = HorizontalAlignment.Center;
+            // 
             // Register
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(txbSurnameRegister);
             Controls.Add(btnCancelRegister);
             Controls.Add(btnSaveRegister);
             Controls.Add(cmbTypeDu);
@@ -150,5 +162,6 @@
         private ComboBox cmbTypeDu;
         private Button btnSaveRegister;
         private Button btnCancelRegister;
+        private TextBox txbSurnameRegister;
     }
 }

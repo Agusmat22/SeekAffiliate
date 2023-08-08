@@ -28,6 +28,7 @@ namespace SeekAffiliate
         private void btnSave_Click(object sender, EventArgs e)
         {
             string name = this.txbNameRegister.Text;
+            string surName = this.txbSurnameRegister.Text;
             string entity = this.txbEntityRegister.Text;
             string affiliateNumber = this.txbNAffiliateRegister.Text;
             int.TryParse(this.txbIntRegister.Text, out int inter);
@@ -36,8 +37,20 @@ namespace SeekAffiliate
             //pongo explicito el ENUMERATE para recibir el dato
             TypeDu typeDu = (TypeDu)this.cmbTypeDu.SelectedItem;
 
+            string filePath = "C:\\Users\\usuario\\Desktop\\afi\\mdaPrueba.csv";
 
-            Functions.DataSaveAffiliate();
+
+            bool saveState = Functions.DataSaveAffiliate(name,surName,entity,inter,typeDu,dniNumber,affiliateNumber,filePath);
+
+            if (saveState)
+            {
+                DialogResult = DialogResult.OK;
+                
+            }
+            else
+            {
+                DialogResult = DialogResult.Abort;
+            }
 
         }
     }
