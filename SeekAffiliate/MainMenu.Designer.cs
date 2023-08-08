@@ -59,8 +59,9 @@
             // afiliadoToolStripMenuItem
             // 
             afiliadoToolStripMenuItem.Name = "afiliadoToolStripMenuItem";
-            afiliadoToolStripMenuItem.Size = new Size(120, 22);
+            afiliadoToolStripMenuItem.Size = new Size(180, 22);
             afiliadoToolStripMenuItem.Text = "Afiliado";
+            afiliadoToolStripMenuItem.Click += afiliadoToolStripMenuItem_Click;
             // 
             // buscarToolStripMenuItem
             // 

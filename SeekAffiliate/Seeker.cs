@@ -60,11 +60,10 @@ namespace SeekAffiliate
 
             if (affiliateList.Count > 0)
             {
-                rtb_affiliate.Text = "";
-                foreach (Affiliate affiliate in affiliateList)
+                foreach (Affiliate af in affiliateList)
                 {
-
-                    rtb_affiliate.Text += affiliate.Mostrar() + "\n\n";
+                    string separado = new string('-', 53);
+                    rtb_affiliate.Text += af.Mostrar() + "\n"+separado+"\n";
                 }
             }
             else

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            rtb_affiliate = new RichTextBox();
             txbSeeked = new TextBox();
             btnSearch = new Button();
             btnCancelSearch = new Button();
@@ -36,16 +35,8 @@
             rdbName = new RadioButton();
             rdbDni = new RadioButton();
             rdbNumber = new RadioButton();
+            rtb_affiliate = new RichTextBox();
             SuspendLayout();
-            // 
-            // rtb_affiliate
-            // 
-            rtb_affiliate.Location = new Point(21, 22);
-            rtb_affiliate.Name = "rtb_affiliate";
-            rtb_affiliate.ReadOnly = true;
-            rtb_affiliate.Size = new Size(344, 402);
-            rtb_affiliate.TabIndex = 0;
-            rtb_affiliate.Text = "";
             // 
             // txbSeeked
             // 
@@ -127,11 +118,22 @@
             rdbNumber.Text = "N* Afiliado";
             rdbNumber.UseVisualStyleBackColor = true;
             // 
+            // rtb_affiliate
+            // 
+            rtb_affiliate.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            rtb_affiliate.Location = new Point(29, 22);
+            rtb_affiliate.Name = "rtb_affiliate";
+            rtb_affiliate.ReadOnly = true;
+            rtb_affiliate.Size = new Size(346, 404);
+            rtb_affiliate.TabIndex = 10;
+            rtb_affiliate.Text = "";
+            // 
             // Seeker
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(rtb_affiliate);
             Controls.Add(rdbNumber);
             Controls.Add(rdbDni);
             Controls.Add(rdbName);
@@ -139,7 +141,6 @@
             Controls.Add(btnCancelSearch);
             Controls.Add(btnSearch);
             Controls.Add(txbSeeked);
-            Controls.Add(rtb_affiliate);
             Name = "Seeker";
             Text = "Seeker";
             Load += Seeker_Load;
@@ -148,8 +149,6 @@
         }
 
         #endregion
-
-        private RichTextBox rtb_affiliate;
         private TextBox txbSeeked;
         private Button btnSearch;
         private Button btnCancelSearch;
@@ -157,5 +156,6 @@
         private RadioButton rdbName;
         private RadioButton rdbDni;
         private RadioButton rdbNumber;
+        private RichTextBox rtb_affiliate;
     }
 }

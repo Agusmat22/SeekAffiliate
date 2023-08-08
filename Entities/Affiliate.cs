@@ -2,6 +2,14 @@
 
 namespace Entities
 {
+    public enum TypeDu
+    {
+        DU,
+        LC,
+        LE,
+
+    }
+
     public class Affiliate
     {
         private string name;
@@ -21,6 +29,9 @@ namespace Entities
             this.number = number;
         }
 
+        
+        
+        
         public string Mostrar()
         {
             StringBuilder stringBuilder = new StringBuilder();  

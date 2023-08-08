@@ -74,14 +74,11 @@ namespace Libraries
 
             if (dataType == "name")
             {
-                Match match;
-
 
                 foreach (Affiliate affiliate in listAffiliate)
                 {
                     if (amountAffiliateLocated < 30)
                     {
-                        match = Regex.Match(affiliate.GetName.ToLower(), data.ToLower());
 
                         if (BuscarCoincidencia(affiliate.GetName,data))
                         {
@@ -122,6 +119,7 @@ namespace Libraries
             return listAffiliateLocated;
         }
 
+        //esta funcion busca coincidencia de string para buscar un nombre
         private static bool BuscarCoincidencia(string cadena, string terminoBusqueda)
         {
             string[] termBusqueda = terminoBusqueda.Split(' ');
@@ -146,5 +144,30 @@ namespace Libraries
 
 
         }
+        
+        public static bool DataSaveAffiliate(string name, string entity, int intern, string typeDocument, string dni, string number,string filePath)
+        {
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(filePath,true))
+                {
+                    writer.WriteLine($"99;{entity};{number};{intern};{name};{name};'';'';'';'';'';'';{typeDocument};{dni};"); 
+                }
+                return true;
+            } 
+            catch (Exception ex) 
+            { 
+                return false;
+            }
+            
+        }
+
+
+
+
+
+
+
+
     }
 }

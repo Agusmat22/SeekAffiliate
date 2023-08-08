@@ -36,5 +36,14 @@ namespace SeekAffiliate
             //cargo la lista de afiliados en el sistema por unica vez
             Functions.ChargeAffiliateList();
         }
+
+        private void afiliadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Register windowsRegister = new Register();
+
+            //creo un dialog para saber el resultado de la operacion despues
+            DialogResult dialogResult =  windowsRegister.ShowDialog();
+
+        }
     }
 }
