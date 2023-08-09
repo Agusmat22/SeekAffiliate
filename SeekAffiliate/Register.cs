@@ -37,10 +37,12 @@ namespace SeekAffiliate
             //pongo explicito el ENUMERATE para recibir el dato
             TypeDu typeDu = (TypeDu)this.cmbTypeDu.SelectedItem;
 
+            //JOB
             string filePath = "C:\\Users\\usuario\\Desktop\\afi\\mdaPrueba.csv";
+            string filePath2 = "C:\\Users\\Lisandro\\Desktop\\App Buscador\\afiMaestro";
+            //Home
 
-
-            bool saveState = Functions.DataSaveAffiliate(name,surName,entity,inter,typeDu,dniNumber,affiliateNumber,filePath);
+            bool saveState = Functions.DataSaveAffiliate(name,surName,entity,inter,typeDu,dniNumber,affiliateNumber,filePath2);
 
             if (saveState)
             {

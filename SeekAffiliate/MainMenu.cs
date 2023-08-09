@@ -39,7 +39,6 @@ namespace SeekAffiliate
             string pc1 = "C:\\Users\\Lisandro\\Desktop\\App Buscador\\afiMaestro.csv";
             string pcJob = "C:\\Users\\usuario\\Desktop\\afi\\mdaPrueba.csv";
             Functions.ChargeAffiliateList(pc1);
-            Functions.CreateDataBase();
         }
 
         private void afiliadoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -65,6 +64,13 @@ namespace SeekAffiliate
 
 
 
+        }
+
+        private void estadisticasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Statistics statistics = new Statistics();
+
+            statistics.Show();
         }
     }
 }

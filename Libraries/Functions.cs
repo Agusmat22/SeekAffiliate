@@ -31,8 +31,6 @@ namespace Libraries
             
                 using (StreamReader reader = new StreamReader(pathFile))
                 {
-
-
                     // Leer y procesar las líneas de datos
                     while (!reader.EndOfStream)
                     {
@@ -63,9 +61,6 @@ namespace Libraries
                     }
 
                 }
-            
-           
-
         }
 
         //ESTABA HACIENDO LA FUNCION PAR ENCONTRAR AFILIADO, CONTINUARLA Y PERFECCIONARLA
@@ -166,37 +161,23 @@ namespace Libraries
             
         }
 
-
-        public static void CreateDataBase()
+        public static int CalculateAmountByEntity(string entity)
         {
-            string connectionString = "Data Source=ServerName;Initial Catalog=DatabaseName;Integrated Security=True;";
+            int amount = 0;
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            foreach (Affiliate af in listAffiliate)
             {
-                connection.Open();
-
-                string insertQuery = "INSERT INTO AffiliateData (Name, Entity,Intern,TypeDocument,Dni,Number) VALUES (@name, @entity,@intern,@typeDocument,@dni,@number)";
-
-                using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
+                if (af.GetEntity == entity)
                 {
-                    foreach (Affiliate af in listAffiliate)
-                    {
-                        insertCommand.Parameters.AddWithValue("@name", af.GetName);
-                        insertCommand.Parameters.AddWithValue("@entity", af.GetEntity);
-                        insertCommand.Parameters.AddWithValue("@intern", af.GetIntern);
-                        insertCommand.Parameters.AddWithValue("@typeDocument", af.GetTypeDu);
-                        insertCommand.Parameters.AddWithValue("@dni", af.GetDni);
-                        insertCommand.Parameters.AddWithValue("@number", af.GetNumber);
-                        // ...
-
-                        insertCommand.ExecuteNonQuery();
-                    }
-
-
-                    
+                    amount++;
                 }
+
+
             }
+
+            return amount;
         }
 
+        
     }
 }

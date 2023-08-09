@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            label3 = new Label();
+            lbTotal = new Label();
             label2 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
+            lbDoctored = new Label();
+            lbRas = new Label();
+            lbOsdic = new Label();
+            lbRedArgentina = new Label();
+            panel1 = new Panel();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -48,81 +50,93 @@
             label1.TabIndex = 0;
             label1.Text = "Estadisticas";
             // 
-            // label3
+            // lbTotal
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(24, 222);
-            label3.Name = "label3";
-            label3.Size = new Size(56, 25);
-            label3.TabIndex = 2;
-            label3.Text = "Total:";
+            lbTotal.AutoSize = true;
+            lbTotal.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbTotal.Location = new Point(18, 17);
+            lbTotal.Name = "lbTotal";
+            lbTotal.Size = new Size(45, 21);
+            lbTotal.TabIndex = 2;
+            lbTotal.Text = "Total:";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(78, 128);
+            label2.Location = new Point(40, 116);
             label2.Name = "label2";
             label2.Size = new Size(214, 30);
             label2.TabIndex = 3;
             label2.Text = "Cantidad de afiliados";
             // 
-            // label4
+            // lbDoctored
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(24, 266);
-            label4.Name = "label4";
-            label4.Size = new Size(94, 25);
-            label4.TabIndex = 4;
-            label4.Text = "Doctored:";
+            lbDoctored.AutoSize = true;
+            lbDoctored.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbDoctored.Location = new Point(18, 57);
+            lbDoctored.Name = "lbDoctored";
+            lbDoctored.Size = new Size(77, 21);
+            lbDoctored.TabIndex = 4;
+            lbDoctored.Text = "Doctored:";
             // 
-            // label5
+            // lbRas
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(24, 310);
-            label5.Name = "label5";
-            label5.Size = new Size(55, 25);
-            label5.TabIndex = 5;
-            label5.Text = "Ras2:";
+            lbRas.AutoSize = true;
+            lbRas.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbRas.Location = new Point(18, 97);
+            lbRas.Name = "lbRas";
+            lbRas.Size = new Size(47, 21);
+            lbRas.TabIndex = 5;
+            lbRas.Text = "Ras2:";
             // 
-            // label6
+            // lbOsdic
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(24, 353);
-            label6.Name = "label6";
-            label6.Size = new Size(63, 25);
-            label6.TabIndex = 6;
-            label6.Text = "Osdic:";
+            lbOsdic.AutoSize = true;
+            lbOsdic.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbOsdic.Location = new Point(18, 142);
+            lbOsdic.Name = "lbOsdic";
+            lbOsdic.Size = new Size(52, 21);
+            lbOsdic.TabIndex = 6;
+            lbOsdic.Text = "Osdic:";
             // 
-            // label7
+            // lbRedArgentina
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(24, 391);
-            label7.Name = "label7";
-            label7.Size = new Size(135, 25);
-            label7.TabIndex = 7;
-            label7.Text = "Red Argentina:";
+            lbRedArgentina.AutoSize = true;
+            lbRedArgentina.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbRedArgentina.Location = new Point(18, 186);
+            lbRedArgentina.Name = "lbRedArgentina";
+            lbRedArgentina.Size = new Size(112, 21);
+            lbRedArgentina.TabIndex = 7;
+            lbRedArgentina.Text = "Red Argentina:";
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.AntiqueWhite;
+            panel1.BackgroundImageLayout = ImageLayout.None;
+            panel1.Controls.Add(lbOsdic);
+            panel1.Controls.Add(lbRedArgentina);
+            panel1.Controls.Add(lbTotal);
+            panel1.Controls.Add(lbDoctored);
+            panel1.Controls.Add(lbRas);
+            panel1.Location = new Point(22, 149);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(258, 277);
+            panel1.TabIndex = 8;
             // 
             // Statistics
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(label4);
+            Controls.Add(panel1);
             Controls.Add(label2);
-            Controls.Add(label3);
             Controls.Add(label1);
             Name = "Statistics";
             Text = "Statistics";
             Load += Statistics_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -130,11 +144,12 @@
         #endregion
 
         private Label label1;
-        private Label label3;
+        private Label lbTotal;
         private Label label2;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Label label7;
+        private Label lbDoctored;
+        private Label lbRas;
+        private Label lbOsdic;
+        private Label lbRedArgentina;
+        private Panel panel1;
     }
 }

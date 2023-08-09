@@ -78,16 +78,18 @@
             // afiliadoToolStripMenuItem1
             // 
             afiliadoToolStripMenuItem1.Name = "afiliadoToolStripMenuItem1";
-            afiliadoToolStripMenuItem1.Size = new Size(120, 22);
+            afiliadoToolStripMenuItem1.Size = new Size(180, 22);
             afiliadoToolStripMenuItem1.Text = "Afiliado";
             afiliadoToolStripMenuItem1.Click += afiliadoToolStripMenuItem1_Click;
             // 
             // estadisticasToolStripMenuItem
             // 
-            estadisticasToolStripMenuItem.ForeColor = SystemColors.ControlLightLight;
+            estadisticasToolStripMenuItem.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            estadisticasToolStripMenuItem.ForeColor = Color.FromArgb(224, 224, 224);
             estadisticasToolStripMenuItem.Name = "estadisticasToolStripMenuItem";
-            estadisticasToolStripMenuItem.Size = new Size(79, 21);
+            estadisticasToolStripMenuItem.Size = new Size(87, 21);
             estadisticasToolStripMenuItem.Text = "Estadisticas";
+            estadisticasToolStripMenuItem.Click += estadisticasToolStripMenuItem_Click;
             // 
             // label1
             // 
