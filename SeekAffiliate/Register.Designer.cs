@@ -120,6 +120,7 @@
             btnCancelRegister.TabIndex = 8;
             btnCancelRegister.Text = "Cancelar";
             btnCancelRegister.UseVisualStyleBackColor = true;
+            btnCancelRegister.Click += btnCancelRegister_Click;
             // 
             // txbSurnameRegister
             // 

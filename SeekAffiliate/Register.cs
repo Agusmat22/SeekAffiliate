@@ -42,18 +42,23 @@ namespace SeekAffiliate
             string filePath2 = "C:\\Users\\Lisandro\\Desktop\\App Buscador\\afiMaestro";
             //Home
 
-            bool saveState = Functions.DataSaveAffiliate(name,surName,entity,inter,typeDu,dniNumber,affiliateNumber,filePath2);
+            bool saveState = Functions.DataSaveAffiliate(name, surName, entity, inter, typeDu, dniNumber, affiliateNumber, filePath2);
 
             if (saveState)
             {
                 DialogResult = DialogResult.OK;
-                
+
             }
             else
             {
                 DialogResult = DialogResult.Abort;
             }
 
+        }
+
+        private void btnCancelRegister_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

@@ -34,16 +34,17 @@
             afiliadoToolStripMenuItem = new ToolStripMenuItem();
             buscarToolStripMenuItem = new ToolStripMenuItem();
             afiliadoToolStripMenuItem1 = new ToolStripMenuItem();
-            estadisticasToolStripMenuItem = new ToolStripMenuItem();
             label1 = new Label();
             entityConnection1 = new System.Data.Entity.Core.EntityClient.EntityConnection();
+            toolStripMenuItem1 = new ToolStripMenuItem();
+            archivoToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
             menuStrip1.BackColor = Color.FromArgb(64, 64, 64);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { agregarToolStripMenuItem, buscarToolStripMenuItem, estadisticasToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { agregarToolStripMenuItem, buscarToolStripMenuItem, toolStripMenuItem1 });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 25);
@@ -52,17 +53,17 @@
             // 
             // agregarToolStripMenuItem
             // 
-            agregarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { afiliadoToolStripMenuItem });
+            agregarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { afiliadoToolStripMenuItem, archivoToolStripMenuItem });
             agregarToolStripMenuItem.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             agregarToolStripMenuItem.ForeColor = Color.FromArgb(224, 224, 224);
             agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            agregarToolStripMenuItem.Size = new Size(68, 21);
-            agregarToolStripMenuItem.Text = "Agregar";
+            agregarToolStripMenuItem.Size = new Size(60, 21);
+            agregarToolStripMenuItem.Text = "Cargar";
             // 
             // afiliadoToolStripMenuItem
             // 
             afiliadoToolStripMenuItem.Name = "afiliadoToolStripMenuItem";
-            afiliadoToolStripMenuItem.Size = new Size(120, 22);
+            afiliadoToolStripMenuItem.Size = new Size(180, 22);
             afiliadoToolStripMenuItem.Text = "Afiliado";
             afiliadoToolStripMenuItem.Click += afiliadoToolStripMenuItem_Click;
             // 
@@ -82,15 +83,6 @@
             afiliadoToolStripMenuItem1.Text = "Afiliado";
             afiliadoToolStripMenuItem1.Click += afiliadoToolStripMenuItem1_Click;
             // 
-            // estadisticasToolStripMenuItem
-            // 
-            estadisticasToolStripMenuItem.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            estadisticasToolStripMenuItem.ForeColor = Color.FromArgb(224, 224, 224);
-            estadisticasToolStripMenuItem.Name = "estadisticasToolStripMenuItem";
-            estadisticasToolStripMenuItem.Size = new Size(87, 21);
-            estadisticasToolStripMenuItem.Text = "Estadisticas";
-            estadisticasToolStripMenuItem.Click += estadisticasToolStripMenuItem_Click;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -102,6 +94,21 @@
             label1.Size = new Size(339, 65);
             label1.TabIndex = 5;
             label1.Text = "Gestion Afiliados";
+            // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            toolStripMenuItem1.ForeColor = Color.FromArgb(224, 224, 224);
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(87, 21);
+            toolStripMenuItem1.Text = "Estadisticas";
+            // 
+            // archivoToolStripMenuItem
+            // 
+            archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
+            archivoToolStripMenuItem.Size = new Size(180, 22);
+            archivoToolStripMenuItem.Text = "Archivo";
+            archivoToolStripMenuItem.Click += archivoToolStripMenuItem_Click;
             // 
             // MainMenu
             // 
@@ -129,8 +136,9 @@
         private ToolStripMenuItem afiliadoToolStripMenuItem;
         private ToolStripMenuItem buscarToolStripMenuItem;
         private ToolStripMenuItem afiliadoToolStripMenuItem1;
-        private ToolStripMenuItem estadisticasToolStripMenuItem;
         private Label label1;
         private System.Data.Entity.Core.EntityClient.EntityConnection entityConnection1;
+        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem archivoToolStripMenuItem;
     }
 }

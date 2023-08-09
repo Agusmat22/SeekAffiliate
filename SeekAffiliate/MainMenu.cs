@@ -38,7 +38,7 @@ namespace SeekAffiliate
             //carpeta pc home = "C:\\Users\\Lisandro\\Desktop\\App Buscador\\afiMaestro.csv"
             string pc1 = "C:\\Users\\Lisandro\\Desktop\\App Buscador\\afiMaestro.csv";
             string pcJob = "C:\\Users\\usuario\\Desktop\\afi\\mdaPrueba.csv";
-            Functions.ChargeAffiliateList(pc1);
+            //Functions.ChargeAffiliateList(pcJob);
         }
 
         private void afiliadoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -71,6 +71,21 @@ namespace SeekAffiliate
             Statistics statistics = new Statistics();
 
             statistics.Show();
+        }
+
+        private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FileCharge fileCharge = new FileCharge();
+
+            DialogResult dialogResult = fileCharge.ShowDialog();
+            
+            if(dialogResult == DialogResult.Abort)
+            {
+                MessageBox.Show("Carga cancelada");
+
+            }
+            
+
         }
     }
 }
