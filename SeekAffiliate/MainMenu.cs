@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace SeekAffiliate
 {
@@ -37,8 +38,8 @@ namespace SeekAffiliate
             //carpeta pc home = "C:\\Users\\Lisandro\\Desktop\\App Buscador\\afiMaestro.csv"
             string pc1 = "C:\\Users\\Lisandro\\Desktop\\App Buscador\\afiMaestro.csv";
             string pcJob = "C:\\Users\\usuario\\Desktop\\afi\\mdaPrueba.csv";
-
-            Functions.ChargeAffiliateList(pcJob);
+            Functions.ChargeAffiliateList(pc1);
+            Functions.CreateDataBase();
         }
 
         private void afiliadoToolStripMenuItem_Click(object sender, EventArgs e)

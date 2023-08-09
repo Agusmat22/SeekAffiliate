@@ -1,9 +1,12 @@
 ﻿using Entities;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
+using System.Data;
+using System.Data.SqlClient;
 
 //SQL LITE
 using System.Data.SQLite;
+using System.Data.SqlClient;
 
 namespace Libraries
 {
@@ -145,6 +148,7 @@ namespace Libraries
 
         }
         
+        //Guarda un afiliado en un archivo CSV
         public static bool DataSaveAffiliate(string name,string surname, string entity, int intern, TypeDu typeDocument, string dni, string number,string filePath)
         {
             try
@@ -163,11 +167,36 @@ namespace Libraries
         }
 
 
+        public static void CreateDataBase()
+        {
+            string connectionString = "Data Source=ServerName;Initial Catalog=DatabaseName;Integrated Security=True;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string insertQuery = "INSERT INTO AffiliateData (Name, Entity,Intern,TypeDocument,Dni,Number) VALUES (@name, @entity,@intern,@typeDocument,@dni,@number)";
+
+                using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
+                {
+                    foreach (Affiliate af in listAffiliate)
+                    {
+                        insertCommand.Parameters.AddWithValue("@name", af.GetName);
+                        insertCommand.Parameters.AddWithValue("@entity", af.GetEntity);
+                        insertCommand.Parameters.AddWithValue("@intern", af.GetIntern);
+                        insertCommand.Parameters.AddWithValue("@typeDocument", af.GetTypeDu);
+                        insertCommand.Parameters.AddWithValue("@dni", af.GetDni);
+                        insertCommand.Parameters.AddWithValue("@number", af.GetNumber);
+                        // ...
+
+                        insertCommand.ExecuteNonQuery();
+                    }
 
 
-
-
-
+                    
+                }
+            }
+        }
 
     }
 }

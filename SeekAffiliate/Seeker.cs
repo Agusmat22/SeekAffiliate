@@ -60,6 +60,9 @@ namespace SeekAffiliate
 
             if (affiliateList.Count > 0)
             {
+
+                rtb_affiliate.Text = "";
+
                 foreach (Affiliate af in affiliateList)
                 {
                     string separado = new string('-', 53);

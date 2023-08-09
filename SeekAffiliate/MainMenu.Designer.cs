@@ -34,8 +34,9 @@
             afiliadoToolStripMenuItem = new ToolStripMenuItem();
             buscarToolStripMenuItem = new ToolStripMenuItem();
             afiliadoToolStripMenuItem1 = new ToolStripMenuItem();
-            label1 = new Label();
             estadisticasToolStripMenuItem = new ToolStripMenuItem();
+            label1 = new Label();
+            entityConnection1 = new System.Data.Entity.Core.EntityClient.EntityConnection();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -77,9 +78,16 @@
             // afiliadoToolStripMenuItem1
             // 
             afiliadoToolStripMenuItem1.Name = "afiliadoToolStripMenuItem1";
-            afiliadoToolStripMenuItem1.Size = new Size(180, 22);
+            afiliadoToolStripMenuItem1.Size = new Size(120, 22);
             afiliadoToolStripMenuItem1.Text = "Afiliado";
             afiliadoToolStripMenuItem1.Click += afiliadoToolStripMenuItem1_Click;
+            // 
+            // estadisticasToolStripMenuItem
+            // 
+            estadisticasToolStripMenuItem.ForeColor = SystemColors.ControlLightLight;
+            estadisticasToolStripMenuItem.Name = "estadisticasToolStripMenuItem";
+            estadisticasToolStripMenuItem.Size = new Size(79, 21);
+            estadisticasToolStripMenuItem.Text = "Estadisticas";
             // 
             // label1
             // 
@@ -92,13 +100,6 @@
             label1.Size = new Size(339, 65);
             label1.TabIndex = 5;
             label1.Text = "Gestion Afiliados";
-            // 
-            // estadisticasToolStripMenuItem
-            // 
-            estadisticasToolStripMenuItem.ForeColor = SystemColors.ControlLightLight;
-            estadisticasToolStripMenuItem.Name = "estadisticasToolStripMenuItem";
-            estadisticasToolStripMenuItem.Size = new Size(79, 21);
-            estadisticasToolStripMenuItem.Text = "Estadisticas";
             // 
             // MainMenu
             // 
@@ -128,5 +129,6 @@
         private ToolStripMenuItem afiliadoToolStripMenuItem1;
         private ToolStripMenuItem estadisticasToolStripMenuItem;
         private Label label1;
+        private System.Data.Entity.Core.EntityClient.EntityConnection entityConnection1;
     }
 }

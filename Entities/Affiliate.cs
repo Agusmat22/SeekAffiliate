@@ -60,6 +60,21 @@ namespace Entities
             get { return dni; }
         }
 
+        public string GetEntity
+        {
+            get { return entity; }
+        }
+
+        public int GetIntern
+        {
+            get { return intern; }
+        }
+
+        public string GetTypeDu
+        {
+            get { return typeDocument; }
+        }
+
 
 
     }
