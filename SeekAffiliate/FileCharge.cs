@@ -14,10 +14,12 @@ namespace SeekAffiliate
     public partial class FileCharge : Form
     {
         private string filePath;
+        private List<int> listPosition;
 
         public FileCharge()
         {
             InitializeComponent();
+            listPosition = new List<int>();
             filePath = "";
         }
 
@@ -46,11 +48,33 @@ namespace SeekAffiliate
 
         private void button1_Click(object sender, EventArgs e)
         {
+            bool inputName = int.TryParse(this.txbPosName.Text, out int posName);
+            bool inputSurname = int.TryParse(this.txbPosName.Text, out int posSurname);
+            bool inputEntity = int.TryParse(this.txbPosName.Text, out int posEntity);
+            bool inputNumber = int.TryParse(this.txbPosName.Text, out int posNumber);
+            bool inputIntern = int.TryParse(this.txbPosName.Text, out int posIntern);
+            bool inputTypeDu = int.TryParse(this.txbPosName.Text, out int posTypeDu);
+            bool inputDu = int.TryParse(this.txbPosName.Text, out int posDu);
+
+
             if (filePath != "")
             {
-                Functions.ChargeAffiliateList(filePath);
-                txbPath.BackColor = Color.Green;
-                MessageBox.Show("Archivo cargado");
+                if (inputName && inputSurname && inputEntity && inputNumber && inputIntern && inputTypeDu && inputDu)
+                {
+                    listPosition.Add(posName);
+                    listPosition.Add(posSurname);
+                    listPosition.Add(posEntity);
+                    listPosition.Add(posNumber);
+                    listPosition.Add(posIntern);
+                    listPosition.Add(posTypeDu);
+                    listPosition.Add(posDu);
+                    
+                    
+                    Functions.ChargeAffiliateList(filePath,listPosition);
+                    txbPath.BackColor = Color.Green;
+                    MessageBox.Show("Archivo cargado");
+                }
+
 
             }
             else
@@ -65,5 +89,7 @@ namespace SeekAffiliate
             DialogResult = DialogResult.Abort;
             //this.Hide();
         }
+
+
     }
 }

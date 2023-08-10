@@ -26,7 +26,7 @@ namespace Libraries
         }
 
         //Esta funcion lee el archivo csv y lo retorna en una lista
-        public static void ChargeAffiliateList(string pathFile)
+        public static void ChargeAffiliateList(string pathFile,List<int>listPos)
         {
             
                 using (StreamReader reader = new StreamReader(pathFile))
@@ -41,20 +41,20 @@ namespace Libraries
 
                         if (data.Length >= 14)
                         {
-                            if (!int.TryParse(data[3], out int intern))
+                            if (!int.TryParse(data[listPos[4]], out int intern))
                             {
                                 intern = -1;
                             }
-
+                            /*
                             if (data[1] == "" || data[12] == "" || data[13] == "" || data[2] == "")
                             {
                                 Console.WriteLine("INgrese aca");
-                            }
+                            }*/
 
 
-                            string nameComplet = $"{data[4]} {data[5]}";
+                            string nameComplet = $"{data[listPos[1]]} {data[listPos[0]]}";
 
-                            affiliate = new Affiliate(nameComplet, data[1], intern, data[12], data[13], data[2]);
+                            affiliate = new Affiliate(nameComplet, data[listPos[2]], intern, data[listPos[5]], data[listPos[6]], data[listPos[3]]);
 
                             listAffiliate.Add(affiliate);
                         }
