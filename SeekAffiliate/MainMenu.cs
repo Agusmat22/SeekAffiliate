@@ -34,11 +34,9 @@ namespace SeekAffiliate
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
-            //cargo la lista de afiliados en el sistema por unica vez
-            //carpeta pc home = "C:\\Users\\Lisandro\\Desktop\\App Buscador\\afiMaestro.csv"
-            string pc1 = "C:\\Users\\Lisandro\\Desktop\\App Buscador\\afiMaestro.csv";
-            string pcJob = "C:\\Users\\usuario\\Desktop\\afi\\mdaPrueba.csv";
-            //Functions.ChargeAffiliateList(pcJob);
+            string messageFile = Functions.GetJson("listAffiliate");
+
+            MessageBox.Show(messageFile);
         }
 
         private void afiliadoToolStripMenuItem_Click(object sender, EventArgs e)

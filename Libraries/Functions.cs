@@ -5,8 +5,10 @@ using System.Data;
 using System.Data.SqlClient;
 
 //SQL LITE
-using System.Data.SQLite;
-using System.Data.SqlClient;
+using Newtonsoft.Json;
+
+
+
 
 namespace Libraries
 {
@@ -45,12 +47,7 @@ namespace Libraries
                             {
                                 intern = -1;
                             }
-                            /*
-                            if (data[1] == "" || data[12] == "" || data[13] == "" || data[2] == "")
-                            {
-                                Console.WriteLine("INgrese aca");
-                            }*/
-
+                            
 
                             string nameComplet = $"{data[listPos[1]]} {data[listPos[0]]}";
 
@@ -63,7 +60,97 @@ namespace Libraries
                 }
         }
 
-        //ESTABA HACIENDO LA FUNCION PAR ENCONTRAR AFILIADO, CONTINUARLA Y PERFECCIONARLA
+        public static string CreateJson(string fileName)
+        {
+            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+
+            // Serializa la lista de afiliados a formato JSON
+            string jsonData = JsonConvert.SerializeObject(listAffiliate, Formatting.Indented);
+
+            // Escribe el JSON en el archivo
+            File.WriteAllText(jsonFilePath, jsonData);
+
+            //return $"Se han guardado {listAffiliate.Count} afiliados en {jsonFileName}";
+            return $"Se han guardado {jsonFilePath}";
+
+
+
+        }
+
+        public static string GetJson(string fileName) 
+        {
+            
+            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+            /*
+            if (File.Exists(jsonFilePath))
+            {
+                string jsonContent = File.ReadAllText(jsonFilePath);
+
+                List<Affiliate> affiliates = JsonSerializer.Deserialize<List<Affiliate>>(jsonContent);
+
+                return "Bienvenido a Gestion de Afiliado";
+            }
+            else
+            {
+                return "Debe cargar un archivo";
+            }*/
+
+            if (File.Exists(jsonFilePath))
+            {
+                string jsonContent = File.ReadAllText(jsonFilePath);
+
+                List<Affiliate> affiliates = JsonSerializer.Deserialize<List<Affiliate>>();
+
+                foreach (Affiliate affiliate in affiliates)
+                {
+                    Console.WriteLine($"GetName: {affiliate.GetName}");
+                    Console.WriteLine($"GetNumber: {affiliate.GetNumber}");
+                    Console.WriteLine($"GetDni: {affiliate.GetDni}");
+                    Console.WriteLine($"GetEntity: {affiliate.GetEntity}");
+                    Console.WriteLine($"GetIntern: {affiliate.GetIntern}");
+                    Console.WriteLine($"GetTypeDu: {affiliate.GetTypeDu}");
+                    Console.WriteLine();
+                }
+            }
+            else
+            {
+                Console.WriteLine("El archivo JSON no existe.");
+            }
+
+
+
+
+        }
+        /*
+         * 
+         * REVISARLA
+        private static List<Affiliate> ParseJson(string jsonContent)
+        {
+            List<Affiliate> affiliates = new List<Affiliate>();
+
+            JsonDocument doc = JsonDocument.Parse(jsonContent);
+
+            if (doc.RootElement.ValueKind == JsonValueKind.Array)
+            {
+                foreach (JsonElement element in doc.RootElement.EnumerateArray())
+                {
+                    Affiliate affiliate = new Affiliate
+                    {
+                        GetName = element.GetProperty("GetName").GetString(),
+                        GetNumber = element.GetProperty("GetNumber").GetString(),
+                        GetDni = element.GetProperty("GetDni").GetString(),
+                        GetEntity = element.GetProperty("GetEntity").GetString(),
+                        GetIntern = element.GetProperty("GetIntern").GetInt32(),
+                        GetTypeDu = element.GetProperty("GetTypeDu").GetString()
+                    };
+
+                    affiliates.Add(affiliate);
+                }
+            }
+
+            return affiliates;
+        }
+        */
 
         //Esta funcion obtiene un afiliado segun el tipo de dato buscado
         public static List<Affiliate> GetAffiliate(string data,string dataType) 

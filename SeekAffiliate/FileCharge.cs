@@ -49,12 +49,12 @@ namespace SeekAffiliate
         private void button1_Click(object sender, EventArgs e)
         {
             bool inputName = int.TryParse(this.txbPosName.Text, out int posName);
-            bool inputSurname = int.TryParse(this.txbPosName.Text, out int posSurname);
-            bool inputEntity = int.TryParse(this.txbPosName.Text, out int posEntity);
-            bool inputNumber = int.TryParse(this.txbPosName.Text, out int posNumber);
-            bool inputIntern = int.TryParse(this.txbPosName.Text, out int posIntern);
-            bool inputTypeDu = int.TryParse(this.txbPosName.Text, out int posTypeDu);
-            bool inputDu = int.TryParse(this.txbPosName.Text, out int posDu);
+            bool inputSurname = int.TryParse(this.txbPosSurname.Text, out int posSurname);
+            bool inputEntity = int.TryParse(this.txbPosEntity.Text, out int posEntity);
+            bool inputNumber = int.TryParse(this.txbPosNumber.Text, out int posNumber);
+            bool inputIntern = int.TryParse(this.txbPosIntern.Text, out int posIntern);
+            bool inputTypeDu = int.TryParse(this.txbPosTypeDu.Text, out int posTypeDu);
+            bool inputDu = int.TryParse(this.txbPosDu.Text, out int posDu);
 
 
             if (filePath != "")
@@ -68,11 +68,12 @@ namespace SeekAffiliate
                     listPosition.Add(posIntern);
                     listPosition.Add(posTypeDu);
                     listPosition.Add(posDu);
-                    
-                    
-                    Functions.ChargeAffiliateList(filePath,listPosition);
+
+
+                    Functions.ChargeAffiliateList(filePath, listPosition);
                     txbPath.BackColor = Color.Green;
-                    MessageBox.Show("Archivo cargado");
+                    string message = Functions.CreateJson("listAffiliate");
+                    MessageBox.Show(message);
                 }
 
 

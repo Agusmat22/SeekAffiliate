@@ -47,7 +47,7 @@
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            txbSurname = new TextBox();
+            txbPosSurname = new TextBox();
             SuspendLayout();
             // 
             // btnSelect
@@ -230,13 +230,13 @@
             label8.TabIndex = 25;
             label8.Text = "APELLIDO";
             // 
-            // txbSurname
+            // txbPosSurname
             // 
-            txbSurname.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txbSurname.Location = new Point(733, 136);
-            txbSurname.Name = "txbSurname";
-            txbSurname.Size = new Size(27, 23);
-            txbSurname.TabIndex = 24;
+            txbPosSurname.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txbPosSurname.Location = new Point(733, 136);
+            txbPosSurname.Name = "txbPosSurname";
+            txbPosSurname.Size = new Size(27, 23);
+            txbPosSurname.TabIndex = 24;
             // 
             // FileCharge
             // 
@@ -244,7 +244,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(label8);
-            Controls.Add(txbSurname);
+            Controls.Add(txbPosSurname);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -290,6 +290,6 @@
         private Label label6;
         private Label label7;
         private Label label8;
-        private TextBox txbSurname;
+        private TextBox txbPosSurname;
     }
 }
