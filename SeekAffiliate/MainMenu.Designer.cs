@@ -28,98 +28,108 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             menuStrip1 = new MenuStrip();
-            agregarToolStripMenuItem = new ToolStripMenuItem();
             afiliadoToolStripMenuItem = new ToolStripMenuItem();
-            buscarToolStripMenuItem = new ToolStripMenuItem();
-            afiliadoToolStripMenuItem1 = new ToolStripMenuItem();
+            chargeToolStripMenuItem = new ToolStripMenuItem();
+            deleteToolStripMenuItem = new ToolStripMenuItem();
+            searchToolStripMenuItem1 = new ToolStripMenuItem();
+            systemToolStripMenuItem = new ToolStripMenuItem();
+            chargeFileToolStripMenuItem1 = new ToolStripMenuItem();
             label1 = new Label();
             entityConnection1 = new System.Data.Entity.Core.EntityClient.EntityConnection();
-            toolStripMenuItem1 = new ToolStripMenuItem();
-            archivoToolStripMenuItem = new ToolStripMenuItem();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.BackColor = Color.FromArgb(64, 64, 64);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { agregarToolStripMenuItem, buscarToolStripMenuItem, toolStripMenuItem1 });
+            menuStrip1.AutoSize = false;
+            menuStrip1.BackColor = Color.Sienna;
+            menuStrip1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            menuStrip1.ImageScalingSize = new Size(16, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { afiliadoToolStripMenuItem, systemToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 25);
+            menuStrip1.Size = new Size(804, 35);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
-            // agregarToolStripMenuItem
-            // 
-            agregarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { afiliadoToolStripMenuItem, archivoToolStripMenuItem });
-            agregarToolStripMenuItem.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            agregarToolStripMenuItem.ForeColor = Color.FromArgb(224, 224, 224);
-            agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            agregarToolStripMenuItem.Size = new Size(60, 21);
-            agregarToolStripMenuItem.Text = "Cargar";
-            // 
             // afiliadoToolStripMenuItem
             // 
+            afiliadoToolStripMenuItem.BackColor = Color.Sienna;
+            afiliadoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { chargeToolStripMenuItem, deleteToolStripMenuItem, searchToolStripMenuItem1 });
+            afiliadoToolStripMenuItem.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            afiliadoToolStripMenuItem.ForeColor = Color.White;
             afiliadoToolStripMenuItem.Name = "afiliadoToolStripMenuItem";
-            afiliadoToolStripMenuItem.Size = new Size(180, 22);
+            afiliadoToolStripMenuItem.Size = new Size(74, 31);
             afiliadoToolStripMenuItem.Text = "Afiliado";
-            afiliadoToolStripMenuItem.Click += afiliadoToolStripMenuItem_Click;
             // 
-            // buscarToolStripMenuItem
+            // chargeToolStripMenuItem
             // 
-            buscarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { afiliadoToolStripMenuItem1 });
-            buscarToolStripMenuItem.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            buscarToolStripMenuItem.ForeColor = Color.FromArgb(224, 224, 224);
-            buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
-            buscarToolStripMenuItem.Size = new Size(58, 21);
-            buscarToolStripMenuItem.Text = "Buscar";
+            chargeToolStripMenuItem.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            chargeToolStripMenuItem.Name = "chargeToolStripMenuItem";
+            chargeToolStripMenuItem.Size = new Size(132, 24);
+            chargeToolStripMenuItem.Text = "Cargar";
+            chargeToolStripMenuItem.Click += chargeToolStripMenuItem_Click_1;
             // 
-            // afiliadoToolStripMenuItem1
+            // deleteToolStripMenuItem
             // 
-            afiliadoToolStripMenuItem1.Name = "afiliadoToolStripMenuItem1";
-            afiliadoToolStripMenuItem1.Size = new Size(180, 22);
-            afiliadoToolStripMenuItem1.Text = "Afiliado";
-            afiliadoToolStripMenuItem1.Click += afiliadoToolStripMenuItem1_Click;
+            deleteToolStripMenuItem.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            deleteToolStripMenuItem.Size = new Size(132, 24);
+            deleteToolStripMenuItem.Text = "Eliminar";
+            deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
+            // 
+            // searchToolStripMenuItem1
+            // 
+            searchToolStripMenuItem1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            searchToolStripMenuItem1.Name = "searchToolStripMenuItem1";
+            searchToolStripMenuItem1.Size = new Size(132, 24);
+            searchToolStripMenuItem1.Text = "Buscar";
+            searchToolStripMenuItem1.Click += searchToolStripMenuItem1_Click;
+            // 
+            // systemToolStripMenuItem
+            // 
+            systemToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { chargeFileToolStripMenuItem1 });
+            systemToolStripMenuItem.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            systemToolStripMenuItem.ForeColor = Color.White;
+            systemToolStripMenuItem.Name = "systemToolStripMenuItem";
+            systemToolStripMenuItem.Size = new Size(73, 31);
+            systemToolStripMenuItem.Text = "Sistema";
+            // 
+            // chargeFileToolStripMenuItem1
+            // 
+            chargeFileToolStripMenuItem1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            chargeFileToolStripMenuItem1.Name = "chargeFileToolStripMenuItem1";
+            chargeFileToolStripMenuItem1.Size = new Size(174, 24);
+            chargeFileToolStripMenuItem1.Text = "Cargar archivo";
+            chargeFileToolStripMenuItem1.Click += chargeFileToolStripMenuItem1_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe Print", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe Print", 30F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.SaddleBrown;
-            label1.Location = new Point(225, 55);
+            label1.Location = new Point(207, 57);
             label1.Name = "label1";
-            label1.Size = new Size(339, 65);
+            label1.Size = new Size(362, 71);
             label1.TabIndex = 5;
             label1.Text = "Gestion Afiliados";
-            // 
-            // toolStripMenuItem1
-            // 
-            toolStripMenuItem1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            toolStripMenuItem1.ForeColor = Color.FromArgb(224, 224, 224);
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(87, 21);
-            toolStripMenuItem1.Text = "Estadisticas";
-            // 
-            // archivoToolStripMenuItem
-            // 
-            archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            archivoToolStripMenuItem.Size = new Size(180, 22);
-            archivoToolStripMenuItem.Text = "Archivo";
-            archivoToolStripMenuItem.Click += archivoToolStripMenuItem_Click;
             // 
             // MainMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(800, 450);
+            BackColor = Color.Beige;
+            ClientSize = new Size(804, 450);
             Controls.Add(label1);
             Controls.Add(menuStrip1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             MainMenuStrip = menuStrip1;
+            MaximizeBox = false;
             Name = "MainMenu";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "MainMenu";
             FormClosing += MainMenu_FormClosing;
             Load += MainMenu_Load;
@@ -132,13 +142,14 @@
         #endregion
 
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem agregarToolStripMenuItem;
         private ToolStripMenuItem afiliadoToolStripMenuItem;
-        private ToolStripMenuItem buscarToolStripMenuItem;
-        private ToolStripMenuItem afiliadoToolStripMenuItem1;
+        private ToolStripMenuItem chargeToolStripMenuItem;
+        private ToolStripMenuItem systemToolStripMenuItem;
+        private ToolStripMenuItem chargeFileToolStripMenuItem1;
         private Label label1;
         private System.Data.Entity.Core.EntityClient.EntityConnection entityConnection1;
-        private ToolStripMenuItem toolStripMenuItem1;
-        private ToolStripMenuItem archivoToolStripMenuItem;
+        private ToolStripMenuItem deleteToolStripMenuItem;
+        private ToolStripMenuItem searchToolStripMenuItem1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

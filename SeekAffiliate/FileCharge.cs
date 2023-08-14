@@ -4,10 +4,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Libraries;
+
+using Entities;
 
 namespace SeekAffiliate
 {
@@ -19,8 +22,9 @@ namespace SeekAffiliate
         public FileCharge()
         {
             InitializeComponent();
-            listPosition = new List<int>();
             filePath = "";
+
+            
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
@@ -49,12 +53,12 @@ namespace SeekAffiliate
         private void button1_Click(object sender, EventArgs e)
         {
             bool inputName = int.TryParse(this.txbPosName.Text, out int posName);
-            bool inputSurname = int.TryParse(this.txbSurname.Text, out int posSurname);
-            bool inputEntity = int.TryParse(this.txbPosEntity.Text, out int posEntity);
-            bool inputNumber = int.TryParse(this.txbPosNumber.Text, out int posNumber);
-            bool inputIntern = int.TryParse(this.txbPosIntern.Text, out int posIntern);
-            bool inputTypeDu = int.TryParse(this.txbPosDu.Text, out int posTypeDu);
-            bool inputDu = int.TryParse(this.txbPosDu.Text, out int posDu);
+            bool inputSurname = int.TryParse(this.txbPosName.Text, out int posSurname);
+            bool inputEntity = int.TryParse(this.txbPosName.Text, out int posEntity);
+            bool inputNumber = int.TryParse(this.txbPosName.Text, out int posNumber);
+            bool inputIntern = int.TryParse(this.txbPosName.Text, out int posIntern);
+            bool inputTypeDu = int.TryParse(this.txbPosName.Text, out int posTypeDu);
+            bool inputDu = int.TryParse(this.txbPosName.Text, out int posDu);
 
 
             if (filePath != "")
@@ -68,11 +72,12 @@ namespace SeekAffiliate
                     listPosition.Add(posIntern);
                     listPosition.Add(posTypeDu);
                     listPosition.Add(posDu);
-                    
-                    
-                    Functions.ChargeAffiliateList(filePath,listPosition);
+
+
+                    Functions.ChargeAffiliateList(filePath, listPosition);
                     txbPath.BackColor = Color.Green;
-                    MessageBox.Show("Archivo cargado");
+                    string message = Functions.CreateJson("listAffiliate");
+                    MessageBox.Show(message);
                 }
 
 
@@ -90,6 +95,32 @@ namespace SeekAffiliate
             //this.Hide();
         }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            CompanyRegister companyRegister = new CompanyRegister();
 
+            this.Hide();
+            DialogResult dialogResult = companyRegister.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                //I get the object than contain the positions
+                string message = Functions.AddCompanyJson("listCompanies",companyRegister.GetPositions());
+                MessageBox.Show(message);
+            }
+
+            this.Show();
+        }
+
+        private void FileCharge_Load(object sender, EventArgs e)
+        {
+            Functions.ChargeCompaniesPos("listCompanies");
+            if (Functions.ListNameCompanies().Count > 0)
+            {
+                this.cmbCompany.DataSource = Functions.ListNameCompanies();
+            }
+
+
+        }
     }
 }

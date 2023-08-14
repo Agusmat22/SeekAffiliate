@@ -19,12 +19,7 @@ namespace SeekAffiliate
             InitializeComponent();
         }
 
-        private void afiliadoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Seeker windowsSeeker = new Seeker();
 
-            windowsSeeker.ShowDialog();
-        }
 
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -34,15 +29,43 @@ namespace SeekAffiliate
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
-            //cargo la lista de afiliados en el sistema por unica vez
-            //carpeta pc home = "C:\\Users\\Lisandro\\Desktop\\App Buscador\\afiMaestro.csv"
-            string pc1 = "C:\\Users\\Lisandro\\Desktop\\App Buscador\\afiMaestro.csv";
-            string pcJob = "C:\\Users\\usuario\\Desktop\\afi\\mdaPrueba.csv";
-            //Functions.ChargeAffiliateList(pcJob);
+            string valueMessage = Functions.GetJson("listAffiliate");
+
+            if (valueMessage != "")
+            {
+                MessageBox.Show(valueMessage);
+            }
+
         }
 
-        private void afiliadoToolStripMenuItem_Click(object sender, EventArgs e)
+
+
+        //This method seek a affiliate in particulate
+        private void searchToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            Search windowsSearch = new Search();
+
+            windowsSearch.ShowDialog();
+        }
+
+        //this method charge a CSV file on system
+        private void chargeFileToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FileCharge fileCharge = new FileCharge();
+
+            DialogResult dialogResult = fileCharge.ShowDialog();
+
+            if (dialogResult == DialogResult.Abort)
+            {
+                MessageBox.Show("Carga cancelada");
+
+            }
+
+        }
+        //This method allow register a affiliate
+        private void chargeToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+
             Register windowsRegister = new Register();
 
             //creo un dialog para saber el resultado de la operacion despues
@@ -62,29 +85,10 @@ namespace SeekAffiliate
                 MessageBox.Show("Registro cancelado");
             }
 
-
-
         }
 
-        private void estadisticasToolStripMenuItem_Click(object sender, EventArgs e)
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Statistics statistics = new Statistics();
-
-            statistics.Show();
-        }
-
-        private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FileCharge fileCharge = new FileCharge();
-
-            DialogResult dialogResult = fileCharge.ShowDialog();
-            
-            if(dialogResult == DialogResult.Abort)
-            {
-                MessageBox.Show("Carga cancelada");
-
-            }
-            
 
         }
     }
