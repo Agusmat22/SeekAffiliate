@@ -31,7 +31,7 @@ namespace SeekAffiliate
             string surName = this.txbSurnameRegister.Text;
             string entity = this.txbEntityRegister.Text;
             string affiliateNumber = this.txbNAffiliateRegister.Text;
-            int.TryParse(this.txbIntRegister.Text, out int inter);
+            string inter = this.txbIntRegister.Text;
             string dniNumber = this.txbNDniRegister.Text;
 
             //pongo explicito el ENUMERATE para recibir el dato

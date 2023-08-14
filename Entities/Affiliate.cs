@@ -1,4 +1,6 @@
 ﻿using System.Text;
+using System.Runtime.Serialization;
+
 
 namespace Entities
 {
@@ -15,11 +17,11 @@ namespace Entities
         private string name;
         private string entity;
         private string number;
-        private int intern;
+        private string intern;
         private string typeDocument;
         private string dni;
 
-        public Affiliate(string name,string entity,int intern, string typeDocument,string dni,string number)
+        public Affiliate(string name,string entity,string intern, string typeDocument,string dni,string number)
         {
             this.name = name;
             this.entity = entity;
@@ -44,32 +46,38 @@ namespace Entities
             return stringBuilder.ToString();
         }
 
-
+        [DataMember(Name = "NOMBRE")]
         public string GetName
         {
             get { return name; }
         }
 
+        [DataMember(Name = "N° AF")]
         public string GetNumber
         {
             get { return number; }
         }
 
+        [DataMember(Name = "DNI")]
         public string GetDni
         {
             get { return dni; }
         }
+
+        [DataMember(Name = "ENTIDAD")]
 
         public string GetEntity
         {
             get { return entity; }
         }
 
-        public int GetIntern
+        [DataMember(Name = "INTERNO")]
+        public string GetIntern
         {
             get { return intern; }
         }
 
+        [DataMember(Name = "TIPO DU")]
         public string GetTypeDu
         {
             get { return typeDocument; }

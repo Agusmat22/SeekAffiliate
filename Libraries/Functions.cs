@@ -6,6 +6,8 @@ using System.Data.SqlClient;
 
 //SQL LITE
 using Newtonsoft.Json;
+//Function for read a json FILE
+using System.Text.Json;
 
 
 
@@ -16,6 +18,7 @@ namespace Libraries
     {
         static List<Affiliate> listAffiliate;
         static List<Affiliate> listAffiliateLocated;
+        static List<Company> listCompany;
         static Affiliate affiliate;
         static int amountAffiliateLocated;
 
@@ -23,6 +26,7 @@ namespace Libraries
         { 
             listAffiliate = new List<Affiliate>();
             listAffiliateLocated = new List<Affiliate>();
+            listCompany = new List<Company>();
             amountAffiliateLocated = 0;
             
         }
@@ -43,15 +47,9 @@ namespace Libraries
 
                         if (data.Length >= 14)
                         {
-                            if (!int.TryParse(data[listPos[4]], out int intern))
-                            {
-                                intern = -1;
-                            }
-                            
-
                             string nameComplet = $"{data[listPos[1]]} {data[listPos[0]]}";
 
-                            affiliate = new Affiliate(nameComplet, data[listPos[2]], intern, data[listPos[5]], data[listPos[6]], data[listPos[3]]);
+                            affiliate = new Affiliate(nameComplet, data[listPos[2]], data[listPos[4]], data[listPos[5]], data[listPos[6]], data[listPos[3]]);
 
                             listAffiliate.Add(affiliate);
                         }
@@ -60,6 +58,28 @@ namespace Libraries
                 }
         }
 
+
+        //This functions read the file JSON of the companies
+        public static void ChargeCompaniesPos(string fileName)
+        {
+            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+            try
+            {
+                if (File.Exists(jsonFilePath))
+                {
+                    string jsonContent = File.ReadAllText(jsonFilePath);
+
+                    // Deserialize the existing JSON content into a list of companies
+                    listCompany = JsonConvert.DeserializeObject<List<Company>>(jsonContent);
+                }
+            }
+            catch
+            {
+
+            }
+
+        }
+        //this method create a json
         public static string CreateJson(string fileName)
         {
             string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
@@ -73,85 +93,135 @@ namespace Libraries
             //return $"Se han guardado {listAffiliate.Count} afiliados en {jsonFileName}";
             return $"Se han guardado {jsonFilePath}";
 
+        }
+
+
+        //overCharger the function for read dictionary
+        public static string CreateJson(string fileName, Company company)
+        {
+            listCompany.Add(company);
+            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+
+            // Serializa la lista de afiliados a formato JSON
+            string jsonData = JsonConvert.SerializeObject(listCompany, Formatting.Indented);
+
+            // Escribe el JSON en el archivo
+            File.WriteAllText(jsonFilePath, jsonData);
+
+            //return $"Se han guardado {listAffiliate.Count} afiliados en {jsonFileName}";
+            return $"Se han guardado {jsonFilePath}";
+
+        }
+
+        public static string AddCompanyJson(string fileName,Company company)
+        {
+            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+            try
+            {
+
+                if (File.Exists(jsonFilePath))
+                {
+                    string jsonContent = File.ReadAllText(jsonFilePath);
+
+                    // Deserialize the existing JSON content into a list of companies
+                    listCompany = JsonConvert.DeserializeObject<List<Company>>(jsonContent);
+
+                    // Add the new company to the list
+                    listCompany.Add(company);
+
+                    // Serialize the updated list of companies back to JSON
+                    string updatedJson = JsonConvert.SerializeObject(listCompany, Formatting.Indented);
+
+                    // Write the updated JSON content back to the file
+                    File.WriteAllText(jsonFilePath, updatedJson);
+
+                    
+
+                }
+                else
+                {
+                    CreateJson(fileName);
+                
+                }
+
+                return "Empresa agregada";
+            }
+            catch (Exception ex)
+            { 
+                return ex.Message;
+            
+            }
+
+            
 
 
         }
 
+
+        public static List<string> ListNameCompanies()
+        {
+             List<string> listNameCompanies = new List<string>();
+
+            foreach (Company company in listCompany)
+            {
+                listNameCompanies.Add(company.GetNameCompany);
+            }
+
+            return listNameCompanies;
+        }
+
+        //this method get the JSON file created when if charged the CSV file
         public static string GetJson(string fileName) 
         {
-            
-            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
-            /*
-            if (File.Exists(jsonFilePath))
+            try
             {
-                string jsonContent = File.ReadAllText(jsonFilePath);
+                //get the directory of JSON file 
+                string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
 
-                List<Affiliate> affiliates = JsonSerializer.Deserialize<List<Affiliate>>(jsonContent);
-
-                return "Bienvenido a Gestion de Afiliado";
-            }
-            else
-            {
-                return "Debe cargar un archivo";
-            }*/
-
-            if (File.Exists(jsonFilePath))
-            {
-                string jsonContent = File.ReadAllText(jsonFilePath);
-
-                List<Affiliate> affiliates = JsonSerializer.Deserialize<List<Affiliate>>();
-
-                foreach (Affiliate affiliate in affiliates)
+                if (File.Exists(jsonFilePath))
                 {
-                    Console.WriteLine($"GetName: {affiliate.GetName}");
-                    Console.WriteLine($"GetNumber: {affiliate.GetNumber}");
-                    Console.WriteLine($"GetDni: {affiliate.GetDni}");
-                    Console.WriteLine($"GetEntity: {affiliate.GetEntity}");
-                    Console.WriteLine($"GetIntern: {affiliate.GetIntern}");
-                    Console.WriteLine($"GetTypeDu: {affiliate.GetTypeDu}");
-                    Console.WriteLine();
-                }
-            }
-            else
-            {
-                Console.WriteLine("El archivo JSON no existe.");
-            }
+                    string jsonContent = File.ReadAllText(jsonFilePath);
 
+                    JsonDocument doc = JsonDocument.Parse(jsonContent);
 
-
-
-        }
-        /*
-         * 
-         * REVISARLA
-        private static List<Affiliate> ParseJson(string jsonContent)
-        {
-            List<Affiliate> affiliates = new List<Affiliate>();
-
-            JsonDocument doc = JsonDocument.Parse(jsonContent);
-
-            if (doc.RootElement.ValueKind == JsonValueKind.Array)
-            {
-                foreach (JsonElement element in doc.RootElement.EnumerateArray())
-                {
-                    Affiliate affiliate = new Affiliate
+                    if (doc.RootElement.ValueKind == JsonValueKind.Array)
                     {
-                        GetName = element.GetProperty("GetName").GetString(),
-                        GetNumber = element.GetProperty("GetNumber").GetString(),
-                        GetDni = element.GetProperty("GetDni").GetString(),
-                        GetEntity = element.GetProperty("GetEntity").GetString(),
-                        GetIntern = element.GetProperty("GetIntern").GetInt32(),
-                        GetTypeDu = element.GetProperty("GetTypeDu").GetString()
-                    };
+                        foreach (JsonElement element in doc.RootElement.EnumerateArray())
+                        {
+                            string getName = element.GetProperty("GetName").GetString();
+                            string getNumber = element.GetProperty("GetNumber").GetString();
+                            string getDni = element.GetProperty("GetDni").GetString();
+                            string getEntity = element.GetProperty("GetEntity").GetString();
+                            string getIntern = element.GetProperty("GetIntern").GetString();
+                            string getTypeDu = element.GetProperty("GetTypeDu").GetString();
 
-                    affiliates.Add(affiliate);
+
+                            affiliate = new Affiliate(getName, getEntity, getIntern, getTypeDu, getDni, getNumber);
+                            listAffiliate.Add(affiliate);
+                        }
+
+                        return "";
+                    }
+                    
+                }
+                else
+                {
+                    return "No hay archivos cargados en el sistema";
                 }
             }
+            catch(Exception ex) 
+            { 
+            
+                return "Error: " + ex.ToString();
+            
+            }
 
-            return affiliates;
+            return "ERROR";
+
+
         }
-        */
-
+        
+        
         //Esta funcion obtiene un afiliado segun el tipo de dato buscado
         public static List<Affiliate> GetAffiliate(string data,string dataType) 
         {
@@ -162,6 +232,7 @@ namespace Libraries
 
                 foreach (Affiliate affiliate in listAffiliate)
                 {
+                    //Indicated for accept until 30 affiliates
                     if (amountAffiliateLocated < 30)
                     {
 
@@ -231,7 +302,7 @@ namespace Libraries
         }
         
         //Guarda un afiliado en un archivo CSV
-        public static bool DataSaveAffiliate(string name,string surname, string entity, int intern, TypeDu typeDocument, string dni, string number,string filePath)
+        public static bool DataSaveAffiliate(string name,string surname, string entity, string intern, TypeDu typeDocument, string dni, string number,string filePath)
         {
             try
             {
@@ -248,6 +319,7 @@ namespace Libraries
             
         }
 
+        //this method calculate amount of entity in total
         public static int CalculateAmountByEntity(string entity)
         {
             int amount = 0;
@@ -265,6 +337,5 @@ namespace Libraries
             return amount;
         }
 
-        
     }
 }

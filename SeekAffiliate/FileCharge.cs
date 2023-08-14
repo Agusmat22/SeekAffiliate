@@ -4,10 +4,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Libraries;
+
+using Entities;
 
 namespace SeekAffiliate
 {
@@ -19,8 +22,9 @@ namespace SeekAffiliate
         public FileCharge()
         {
             InitializeComponent();
-            listPosition = new List<int>();
             filePath = "";
+
+            
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
@@ -91,6 +95,32 @@ namespace SeekAffiliate
             //this.Hide();
         }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            CompanyRegister companyRegister = new CompanyRegister();
 
+            this.Hide();
+            DialogResult dialogResult = companyRegister.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                //I get the object than contain the positions
+                string message = Functions.AddCompanyJson("listCompanies",companyRegister.GetPositions());
+                MessageBox.Show(message);
+            }
+
+            this.Show();
+        }
+
+        private void FileCharge_Load(object sender, EventArgs e)
+        {
+            Functions.ChargeCompaniesPos("listCompanies");
+            if (Functions.ListNameCompanies().Count > 0)
+            {
+                this.cmbCompany.DataSource = Functions.ListNameCompanies();
+            }
+
+
+        }
     }
 }

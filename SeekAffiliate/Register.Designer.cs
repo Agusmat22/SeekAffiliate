@@ -146,6 +146,8 @@
             Controls.Add(txbEntityRegister);
             Controls.Add(txbNAffiliateRegister);
             Controls.Add(txbNameRegister);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "Register";
             Text = "Register";
             Load += Register_Load;
