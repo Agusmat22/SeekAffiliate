@@ -30,7 +30,7 @@ namespace SeekAffiliate
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string joinNameCompany = this.txbCompanyName.Text;
+            string joinNameCompany = this.txbCompanyName.Text.ToUpper();
 
             bool inputName = int.TryParse(this.txbPosName.Text, out int posName);
             bool inputSurname = int.TryParse(this.txbPosSurname.Text, out int posSurname);

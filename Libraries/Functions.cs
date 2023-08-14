@@ -18,15 +18,16 @@ namespace Libraries
     {
         static List<Affiliate> listAffiliate;
         static List<Affiliate> listAffiliateLocated;
-        static List<Company> listCompany;
+        static List<Company> listCompanies;
         static Affiliate affiliate;
+        static Company company;
         static int amountAffiliateLocated;
 
         static Functions() 
         { 
             listAffiliate = new List<Affiliate>();
             listAffiliateLocated = new List<Affiliate>();
-            listCompany = new List<Company>();
+            listCompanies = new List<Company>();
             amountAffiliateLocated = 0;
             
         }
@@ -66,17 +67,45 @@ namespace Libraries
             try
             {
                 if (File.Exists(jsonFilePath))
-                {
+                {   /*
                     string jsonContent = File.ReadAllText(jsonFilePath);
 
                     // Deserialize the existing JSON content into a list of companies
                     listCompany = JsonConvert.DeserializeObject<List<Company>>(jsonContent);
+                    */
+                    string jsonContent = File.ReadAllText(jsonFilePath);
+
+                    JsonDocument doc = JsonDocument.Parse(jsonContent);
+
+                    if (doc.RootElement.ValueKind == JsonValueKind.Array)
+                    {
+                        foreach (JsonElement element in doc.RootElement.EnumerateArray())
+                        {
+                            string posNameCompany = element.GetProperty("GetNameCompany").GetString();
+                            
+                            //I read it how a INT32
+                            int posName = element.GetProperty("GetName").GetInt32();
+                            int posSurName = element.GetProperty("GetSurName").GetInt32();
+                            int posEntity = element.GetProperty("GetEntity").GetInt32();
+                            int posNumber = element.GetProperty("GetNumber").GetInt32();
+                            int posIntern = element.GetProperty("GetIntern").GetInt32();
+                            int posTypeDu = element.GetProperty("GetTypeDu").GetInt32();
+                            int posDu = element.GetProperty("GetDu").GetInt32();
+
+
+                            company = new Company(posNameCompany, posName, posSurName, posEntity, posNumber
+                                            , posIntern, posTypeDu, posDu);
+                            listCompanies.Add(company);
+                        }
+
+                    }
                 }
             }
             catch
             {
 
             }
+
 
         }
         //this method create a json
@@ -99,11 +128,11 @@ namespace Libraries
         //overCharger the function for read dictionary
         public static string CreateJson(string fileName, Company company)
         {
-            listCompany.Add(company);
+            listCompanies.Add(company);
             string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
 
             // Serializa la lista de afiliados a formato JSON
-            string jsonData = JsonConvert.SerializeObject(listCompany, Formatting.Indented);
+            string jsonData = JsonConvert.SerializeObject(listCompanies, Formatting.Indented);
 
             // Escribe el JSON en el archivo
             File.WriteAllText(jsonFilePath, jsonData);
@@ -124,13 +153,13 @@ namespace Libraries
                     string jsonContent = File.ReadAllText(jsonFilePath);
 
                     // Deserialize the existing JSON content into a list of companies
-                    listCompany = JsonConvert.DeserializeObject<List<Company>>(jsonContent);
+                    listCompanies = JsonConvert.DeserializeObject<List<Company>>(jsonContent);
 
                     // Add the new company to the list
-                    listCompany.Add(company);
+                    listCompanies.Add(company);
 
                     // Serialize the updated list of companies back to JSON
-                    string updatedJson = JsonConvert.SerializeObject(listCompany, Formatting.Indented);
+                    string updatedJson = JsonConvert.SerializeObject(listCompanies, Formatting.Indented);
 
                     // Write the updated JSON content back to the file
                     File.WriteAllText(jsonFilePath, updatedJson);
@@ -140,7 +169,7 @@ namespace Libraries
                 }
                 else
                 {
-                    CreateJson(fileName);
+                    CreateJson(fileName,company);
                 
                 }
 
@@ -162,7 +191,7 @@ namespace Libraries
         {
              List<string> listNameCompanies = new List<string>();
 
-            foreach (Company company in listCompany)
+            foreach (Company company in listCompanies)
             {
                 listNameCompanies.Add(company.GetNameCompany);
             }

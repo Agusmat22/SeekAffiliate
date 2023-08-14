@@ -106,6 +106,7 @@ namespace SeekAffiliate
             {
                 //I get the object than contain the positions
                 string message = Functions.AddCompanyJson("listCompanies",companyRegister.GetPositions());
+                this.cmbCompany.DataSource = Functions.ListNameCompanies();
                 MessageBox.Show(message);
             }
 
