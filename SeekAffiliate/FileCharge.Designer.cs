@@ -276,11 +276,13 @@
             // 
             // cmbCompany
             // 
+            cmbCompany.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbCompany.FormattingEnabled = true;
             cmbCompany.Location = new Point(57, 291);
             cmbCompany.Name = "cmbCompany";
-            cmbCompany.Size = new Size(281, 23);
+            cmbCompany.Size = new Size(281, 28);
             cmbCompany.TabIndex = 27;
+            cmbCompany.SelectedIndexChanged += cmbCompany_SelectedIndexChanged;
             // 
             // label7
             // 

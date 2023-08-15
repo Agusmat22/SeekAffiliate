@@ -63,16 +63,17 @@ namespace Libraries
         //This functions read the file JSON of the companies
         public static void ChargeCompaniesPos(string fileName)
         {
+
             string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
             try
             {
                 if (File.Exists(jsonFilePath))
-                {   /*
-                    string jsonContent = File.ReadAllText(jsonFilePath);
+                {
+                    if (listCompanies.Count > 0)
+                    {
+                        listCompanies.Clear();   
+                    }
 
-                    // Deserialize the existing JSON content into a list of companies
-                    listCompany = JsonConvert.DeserializeObject<List<Company>>(jsonContent);
-                    */
                     string jsonContent = File.ReadAllText(jsonFilePath);
 
                     JsonDocument doc = JsonDocument.Parse(jsonContent);
@@ -81,7 +82,7 @@ namespace Libraries
                     {
                         foreach (JsonElement element in doc.RootElement.EnumerateArray())
                         {
-                            string posNameCompany = element.GetProperty("GetNameCompany").GetString();
+                            string posNameCompany = element.GetProperty("GetNameCompany").ToString();
                             
                             //I read it how a INT32
                             int posName = element.GetProperty("GetName").GetInt32();
@@ -135,14 +136,14 @@ namespace Libraries
             string jsonData = JsonConvert.SerializeObject(listCompanies, Formatting.Indented);
 
             // Escribe el JSON en el archivo
-            File.WriteAllText(jsonFilePath, jsonData);
+             File.WriteAllText(jsonFilePath, jsonData);
 
             //return $"Se han guardado {listAffiliate.Count} afiliados en {jsonFileName}";
             return $"Se han guardado {jsonFilePath}";
 
         }
 
-        public static string AddCompanyJson(string fileName,Company company)
+        public static string AddCompanyJson(string fileName,Company companyJoin)
         {
             string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
             try
@@ -150,21 +151,21 @@ namespace Libraries
 
                 if (File.Exists(jsonFilePath))
                 {
+                    List<Company> list = new List<Company>();
+
                     string jsonContent = File.ReadAllText(jsonFilePath);
 
-                    // Deserialize the existing JSON content into a list of companies
-                    listCompanies = JsonConvert.DeserializeObject<List<Company>>(jsonContent);
+                    listCompanies.Add(companyJoin);
+
 
                     // Add the new company to the list
-                    listCompanies.Add(company);
+                    //list.Add(company);
 
                     // Serialize the updated list of companies back to JSON
                     string updatedJson = JsonConvert.SerializeObject(listCompanies, Formatting.Indented);
 
                     // Write the updated JSON content back to the file
                     File.WriteAllText(jsonFilePath, updatedJson);
-
-                    
 
                 }
                 else
@@ -189,7 +190,9 @@ namespace Libraries
 
         public static List<string> ListNameCompanies()
         {
-             List<string> listNameCompanies = new List<string>();
+            ChargeCompaniesPos("listCompanies");
+
+            List<string> listNameCompanies = new List<string>();
 
             foreach (Company company in listCompanies)
             {
@@ -197,6 +200,12 @@ namespace Libraries
             }
 
             return listNameCompanies;
+        }
+
+        public static List<Company> ListCompanies
+        {
+            get { return listCompanies; }
+
         }
 
         //this method get the JSON file created when if charged the CSV file

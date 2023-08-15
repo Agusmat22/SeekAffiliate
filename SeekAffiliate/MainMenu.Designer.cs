@@ -68,7 +68,7 @@
             // 
             chargeToolStripMenuItem.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             chargeToolStripMenuItem.Name = "chargeToolStripMenuItem";
-            chargeToolStripMenuItem.Size = new Size(132, 24);
+            chargeToolStripMenuItem.Size = new Size(180, 24);
             chargeToolStripMenuItem.Text = "Cargar";
             chargeToolStripMenuItem.Click += chargeToolStripMenuItem_Click_1;
             // 
@@ -76,7 +76,7 @@
             // 
             deleteToolStripMenuItem.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new Size(132, 24);
+            deleteToolStripMenuItem.Size = new Size(180, 24);
             deleteToolStripMenuItem.Text = "Eliminar";
             deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
             // 
@@ -84,7 +84,7 @@
             // 
             searchToolStripMenuItem1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             searchToolStripMenuItem1.Name = "searchToolStripMenuItem1";
-            searchToolStripMenuItem1.Size = new Size(132, 24);
+            searchToolStripMenuItem1.Size = new Size(180, 24);
             searchToolStripMenuItem1.Text = "Buscar";
             searchToolStripMenuItem1.Click += searchToolStripMenuItem1_Click;
             // 
@@ -101,7 +101,7 @@
             // 
             chargeFileToolStripMenuItem1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             chargeFileToolStripMenuItem1.Name = "chargeFileToolStripMenuItem1";
-            chargeFileToolStripMenuItem1.Size = new Size(174, 24);
+            chargeFileToolStripMenuItem1.Size = new Size(180, 24);
             chargeFileToolStripMenuItem1.Text = "Cargar archivo";
             chargeFileToolStripMenuItem1.Click += chargeFileToolStripMenuItem1_Click;
             // 
@@ -111,7 +111,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe Print", 30F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.SaddleBrown;
-            label1.Location = new Point(207, 57);
+            label1.Location = new Point(215, 97);
             label1.Name = "label1";
             label1.Size = new Size(362, 71);
             label1.TabIndex = 5;

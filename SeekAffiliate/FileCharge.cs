@@ -18,13 +18,14 @@ namespace SeekAffiliate
     {
         private string filePath;
         private List<int> listPosition;
+        private List<string> listCompanies;
 
         public FileCharge()
         {
             InitializeComponent();
             filePath = "";
 
-            
+
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
@@ -104,8 +105,9 @@ namespace SeekAffiliate
 
             if (dialogResult == DialogResult.OK)
             {
-                //I get the object than contain the positions
-                string message = Functions.AddCompanyJson("listCompanies",companyRegister.GetPositions());
+                //I get the object than contain the positions and I save whithin of json
+                string message = Functions.AddCompanyJson("listCompanies", companyRegister.GetPositions());
+                //Functions.ChargeCompaniesPos("listCompanies");
                 this.cmbCompany.DataSource = Functions.ListNameCompanies();
                 MessageBox.Show(message);
             }
@@ -115,12 +117,32 @@ namespace SeekAffiliate
 
         private void FileCharge_Load(object sender, EventArgs e)
         {
-            Functions.ChargeCompaniesPos("listCompanies");
+            //I charger the Companies name List
             if (Functions.ListNameCompanies().Count > 0)
             {
                 this.cmbCompany.DataSource = Functions.ListNameCompanies();
-            }
 
+            }
+        }
+
+        private void cmbCompany_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectCompany = cmbCompany.SelectedItem.ToString();
+
+            foreach (Company company in Functions.ListCompanies)
+            {
+                if (selectCompany == company.GetNameCompany)
+                {
+                    this.txbPosName.Text = company.GetName.ToString();
+                    this.txbPosSurname.Text = company.GetSurName.ToString();
+                    this.txbPosEntity.Text = company.GetEntity.ToString();
+                    this.txbPosNumber.Text = company.GetNumber.ToString();
+                    this.txbPosIntern.Text = company.GetIntern.ToString();
+                    this.txbPosTypeDu.Text = company.GetTypeDu.ToString();
+                    this.txbPosDu.Text = company.GetDu.ToString();
+                    break;
+                }
+            }
 
         }
     }
