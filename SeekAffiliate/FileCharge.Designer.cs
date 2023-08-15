@@ -51,6 +51,7 @@
             cmbCompany = new ComboBox();
             label7 = new Label();
             linkLabel1 = new LinkLabel();
+            linkLabel2 = new LinkLabel();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -299,15 +300,28 @@
             // linkLabel1
             // 
             linkLabel1.AutoSize = true;
-            linkLabel1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            linkLabel1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             linkLabel1.LinkColor = Color.Black;
-            linkLabel1.Location = new Point(672, 9);
+            linkLabel1.Location = new Point(588, 34);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(116, 17);
+            linkLabel1.Size = new Size(101, 15);
             linkLabel1.TabIndex = 29;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Registrar Empresa";
             linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
+            // linkLabel2
+            // 
+            linkLabel2.AutoSize = true;
+            linkLabel2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            linkLabel2.LinkColor = Color.Red;
+            linkLabel2.Location = new Point(690, 34);
+            linkLabel2.Name = "linkLabel2";
+            linkLabel2.Size = new Size(98, 15);
+            linkLabel2.TabIndex = 30;
+            linkLabel2.TabStop = true;
+            linkLabel2.Text = "Eliminar Empresa";
+            linkLabel2.LinkClicked += linkLabel2_LinkClicked;
             // 
             // FileCharge
             // 
@@ -315,6 +329,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Beige;
             ClientSize = new Size(800, 450);
+            Controls.Add(linkLabel2);
             Controls.Add(linkLabel1);
             Controls.Add(label7);
             Controls.Add(cmbCompany);
@@ -324,7 +339,6 @@
             Controls.Add(label1);
             Controls.Add(txbPath);
             Controls.Add(btnSelect);
-            Cursor = Cursors.Default;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             Name = "FileCharge";
@@ -362,5 +376,6 @@
         private ComboBox cmbCompany;
         private Label label7;
         private LinkLabel linkLabel1;
+        private LinkLabel linkLabel2;
     }
 }

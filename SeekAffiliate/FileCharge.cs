@@ -19,6 +19,7 @@ namespace SeekAffiliate
         private string filePath;
         private List<int> listPosition;
         private List<string> listCompanies;
+        string selectCompany;
 
         public FileCharge()
         {
@@ -77,7 +78,7 @@ namespace SeekAffiliate
 
                     Functions.ChargeAffiliateList(filePath, listPosition);
                     txbPath.BackColor = Color.Green;
-                    string message = Functions.CreateJson("listAffiliate");
+                    string message = Functions.CreateJson();
                     MessageBox.Show(message);
                 }
 
@@ -106,7 +107,7 @@ namespace SeekAffiliate
             if (dialogResult == DialogResult.OK)
             {
                 //I get the object than contain the positions and I save whithin of json
-                string message = Functions.AddCompanyJson("listCompanies", companyRegister.GetPositions());
+                string message = Functions.AddCompanyJson(companyRegister.GetPositions());
                 //Functions.ChargeCompaniesPos("listCompanies");
                 this.cmbCompany.DataSource = Functions.ListNameCompanies();
                 MessageBox.Show(message);
@@ -127,7 +128,7 @@ namespace SeekAffiliate
 
         private void cmbCompany_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectCompany = cmbCompany.SelectedItem.ToString();
+            selectCompany = cmbCompany.SelectedItem.ToString();
 
             foreach (Company company in Functions.ListCompanies)
             {
@@ -144,6 +145,23 @@ namespace SeekAffiliate
                 }
             }
 
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            bool removeCompanie = Functions.RemoveCompany(selectCompany);
+
+            if (removeCompanie)
+            {
+                this.cmbCompany.DataSource = Functions.ListNameCompanies();
+                MessageBox.Show($"Empresa *{selectCompany}* elimnada. ");
+
+            }
+            else
+            {
+                MessageBox.Show($"No hay empresas registradas");
+
+            }
         }
     }
 }

@@ -16,6 +16,9 @@ namespace Libraries
 {
     public static class Functions
     {
+        const string fileNameAffiliates = "listAffiliates";
+        const string fileNameCompanies = "listCompanies";
+
         static List<Affiliate> listAffiliate;
         static List<Affiliate> listAffiliateLocated;
         static List<Company> listCompanies;
@@ -23,12 +26,14 @@ namespace Libraries
         static Company company;
         static int amountAffiliateLocated;
 
+
         static Functions() 
         { 
             listAffiliate = new List<Affiliate>();
             listAffiliateLocated = new List<Affiliate>();
             listCompanies = new List<Company>();
             amountAffiliateLocated = 0;
+
             
         }
 
@@ -61,10 +66,10 @@ namespace Libraries
 
 
         //This functions read the file JSON of the companies
-        public static void ChargeCompaniesPos(string fileName)
+        public static void ChargeCompaniesPos()
         {
 
-            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileNameCompanies);
             try
             {
                 if (File.Exists(jsonFilePath))
@@ -110,9 +115,9 @@ namespace Libraries
 
         }
         //this method create a json
-        public static string CreateJson(string fileName)
+        public static string CreateJson()
         {
-            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileNameAffiliates);
 
             // Serializa la lista de afiliados a formato JSON
             string jsonData = JsonConvert.SerializeObject(listAffiliate, Formatting.Indented);
@@ -127,10 +132,10 @@ namespace Libraries
 
 
         //overCharger the function for read dictionary
-        public static string CreateJson(string fileName, Company company)
+        public static string CreateJson(Company company)
         {
             listCompanies.Add(company);
-            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileNameCompanies);
 
             // Serializa la lista de afiliados a formato JSON
             string jsonData = JsonConvert.SerializeObject(listCompanies, Formatting.Indented);
@@ -143,14 +148,15 @@ namespace Libraries
 
         }
 
-        public static string AddCompanyJson(string fileName,Company companyJoin)
+        public static string AddCompanyJson(Company companyJoin)
         {
-            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileNameCompanies);
             try
             {
 
                 if (File.Exists(jsonFilePath))
                 {
+                    /*
                     List<Company> list = new List<Company>();
 
                     string jsonContent = File.ReadAllText(jsonFilePath);
@@ -165,12 +171,14 @@ namespace Libraries
                     string updatedJson = JsonConvert.SerializeObject(listCompanies, Formatting.Indented);
 
                     // Write the updated JSON content back to the file
-                    File.WriteAllText(jsonFilePath, updatedJson);
+                    File.WriteAllText(jsonFilePath, updatedJson);*/
+                    listCompanies.Add(companyJoin);
+                    SaveCompanyJson();
 
                 }
                 else
                 {
-                    CreateJson(fileName,company);
+                    CreateJson(company);
                 
                 }
 
@@ -181,16 +189,48 @@ namespace Libraries
                 return ex.Message;
             
             }
+        }
 
-            
 
+
+        public static void SaveCompanyJson()
+        {
+            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileNameCompanies);
+
+            //string jsonContent = File.ReadAllText(jsonFilePath);
+
+            //listCompanies.Add(companyJoin);
+
+
+            // Serialize the updated list of companies back to JSON
+            string updatedJson = JsonConvert.SerializeObject(listCompanies, Formatting.Indented);
+
+            // Write the updated JSON content back to the file
+            File.WriteAllText(jsonFilePath, updatedJson);
+        }
+
+
+        public static bool RemoveCompany(string name)
+        {
+            foreach (Company company in listCompanies)
+            {
+                if (company.GetNameCompany == name)
+                {
+                    listCompanies.Remove(company);
+                    SaveCompanyJson();
+                    return true;
+                }
+
+
+            }
+            return false;
 
         }
 
 
         public static List<string> ListNameCompanies()
         {
-            ChargeCompaniesPos("listCompanies");
+            ChargeCompaniesPos();
 
             List<string> listNameCompanies = new List<string>();
 
@@ -374,6 +414,7 @@ namespace Libraries
 
             return amount;
         }
+
 
     }
 }
