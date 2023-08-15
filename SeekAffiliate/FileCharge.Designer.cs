@@ -324,7 +324,7 @@
             Controls.Add(label1);
             Controls.Add(txbPath);
             Controls.Add(btnSelect);
-            Cursor = Cursors.Hand;
+            Cursor = Cursors.Default;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             Name = "FileCharge";
