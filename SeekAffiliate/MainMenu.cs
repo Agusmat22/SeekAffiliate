@@ -29,12 +29,14 @@ namespace SeekAffiliate
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
-            string valueMessage = Functions.GetJson("listAffiliate");
+            string valueMessage = Functions.GetJson("listAffiliates");
 
             if (valueMessage != "")
             {
                 MessageBox.Show(valueMessage);
             }
+
+
 
         }
 
@@ -45,7 +47,12 @@ namespace SeekAffiliate
         {
             Search windowsSearch = new Search();
 
-            windowsSearch.ShowDialog();
+            this.Hide();
+
+            DialogResult dialResult = windowsSearch.ShowDialog();
+
+
+            this.Show();
         }
 
         //this method charge a CSV file on system

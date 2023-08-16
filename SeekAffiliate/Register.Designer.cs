@@ -102,24 +102,34 @@
             // 
             // btnSaveRegister
             // 
-            btnSaveRegister.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSaveRegister.BackColor = Color.SaddleBrown;
+            btnSaveRegister.Cursor = Cursors.Hand;
+            btnSaveRegister.FlatAppearance.BorderColor = Color.SaddleBrown;
+            btnSaveRegister.FlatStyle = FlatStyle.Flat;
+            btnSaveRegister.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSaveRegister.ForeColor = Color.White;
             btnSaveRegister.Location = new Point(127, 307);
             btnSaveRegister.Name = "btnSaveRegister";
             btnSaveRegister.Size = new Size(133, 49);
             btnSaveRegister.TabIndex = 7;
             btnSaveRegister.Text = "Guardar";
-            btnSaveRegister.UseVisualStyleBackColor = true;
+            btnSaveRegister.UseVisualStyleBackColor = false;
             btnSaveRegister.Click += btnSave_Click;
             // 
             // btnCancelRegister
             // 
-            btnCancelRegister.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCancelRegister.BackColor = Color.SaddleBrown;
+            btnCancelRegister.Cursor = Cursors.Hand;
+            btnCancelRegister.FlatAppearance.BorderColor = Color.SaddleBrown;
+            btnCancelRegister.FlatStyle = FlatStyle.Flat;
+            btnCancelRegister.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancelRegister.ForeColor = Color.White;
             btnCancelRegister.Location = new Point(526, 307);
             btnCancelRegister.Name = "btnCancelRegister";
             btnCancelRegister.Size = new Size(133, 49);
             btnCancelRegister.TabIndex = 8;
             btnCancelRegister.Text = "Cancelar";
-            btnCancelRegister.UseVisualStyleBackColor = true;
+            btnCancelRegister.UseVisualStyleBackColor = false;
             btnCancelRegister.Click += btnCancelRegister_Click;
             // 
             // txbSurnameRegister
@@ -136,6 +146,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Beige;
             ClientSize = new Size(800, 450);
             Controls.Add(txbSurnameRegister);
             Controls.Add(btnCancelRegister);

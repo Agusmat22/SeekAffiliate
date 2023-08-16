@@ -178,7 +178,7 @@ namespace Libraries
                 }
                 else
                 {
-                    CreateJson(company);
+                    CreateJson(companyJoin);
                 
                 }
 
@@ -234,10 +234,18 @@ namespace Libraries
 
             List<string> listNameCompanies = new List<string>();
 
-            foreach (Company company in listCompanies)
+            if (listCompanies.Count > 0)
             {
-                listNameCompanies.Add(company.GetNameCompany);
+                foreach (Company company in listCompanies)
+                {
+                    listNameCompanies.Add(company.GetNameCompany);
+                }
             }
+            else
+            {
+                listNameCompanies.Add("");
+            }
+
 
             return listNameCompanies;
         }

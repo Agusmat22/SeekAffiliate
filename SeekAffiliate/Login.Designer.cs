@@ -52,11 +52,11 @@
             txbUser.Cursor = Cursors.IBeam;
             txbUser.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             txbUser.ForeColor = Color.Black;
-            txbUser.Location = new Point(265, 131);
+            txbUser.Location = new Point(265, 132);
             txbUser.Multiline = true;
             txbUser.Name = "txbUser";
             txbUser.PlaceholderText = "Usuario";
-            txbUser.Size = new Size(252, 52);
+            txbUser.Size = new Size(250, 43);
             txbUser.TabIndex = 0;
             txbUser.TextAlign = HorizontalAlignment.Center;
             txbUser.WordWrap = false;
@@ -71,7 +71,7 @@
             txbPassword.Name = "txbPassword";
             txbPassword.PasswordChar = '*';
             txbPassword.PlaceholderText = "Clave";
-            txbPassword.Size = new Size(250, 53);
+            txbPassword.Size = new Size(250, 43);
             txbPassword.TabIndex = 2;
             txbPassword.TextAlign = HorizontalAlignment.Center;
             // 
@@ -82,11 +82,11 @@
             btnJoin.FlatAppearance.BorderColor = Color.SaddleBrown;
             btnJoin.FlatAppearance.BorderSize = 3;
             btnJoin.FlatStyle = FlatStyle.Flat;
-            btnJoin.Font = new Font("Segoe UI", 17.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnJoin.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnJoin.ForeColor = Color.White;
-            btnJoin.Location = new Point(333, 343);
+            btnJoin.Location = new Point(342, 350);
             btnJoin.Name = "btnJoin";
-            btnJoin.Size = new Size(117, 45);
+            btnJoin.Size = new Size(106, 43);
             btnJoin.TabIndex = 3;
             btnJoin.Text = "Ingresar";
             btnJoin.UseVisualStyleBackColor = false;
@@ -115,7 +115,7 @@
             // panel2
             // 
             panel2.BackColor = Color.SaddleBrown;
-            panel2.Location = new Point(262, 181);
+            panel2.Location = new Point(267, 173);
             panel2.Name = "panel2";
             panel2.Size = new Size(250, 5);
             panel2.TabIndex = 6;
@@ -125,7 +125,7 @@
             panel3.BackColor = Color.SaddleBrown;
             panel3.Location = new Point(262, 129);
             panel3.Name = "panel3";
-            panel3.Size = new Size(5, 57);
+            panel3.Size = new Size(5, 49);
             panel3.TabIndex = 7;
             // 
             // panel4
@@ -133,7 +133,7 @@
             panel4.BackColor = Color.SaddleBrown;
             panel4.Location = new Point(512, 129);
             panel4.Name = "panel4";
-            panel4.Size = new Size(5, 57);
+            panel4.Size = new Size(5, 49);
             panel4.TabIndex = 8;
             // 
             // panel5
@@ -141,7 +141,7 @@
             panel5.BackColor = Color.SaddleBrown;
             panel5.Location = new Point(262, 227);
             panel5.Name = "panel5";
-            panel5.Size = new Size(5, 57);
+            panel5.Size = new Size(5, 49);
             panel5.TabIndex = 8;
             // 
             // panel6
@@ -164,7 +164,7 @@
             // panel8
             // 
             panel8.BackColor = Color.SaddleBrown;
-            panel8.Location = new Point(265, 279);
+            panel8.Location = new Point(262, 271);
             panel8.Name = "panel8";
             panel8.Size = new Size(250, 5);
             panel8.TabIndex = 10;
@@ -174,7 +174,7 @@
             panel9.BackColor = Color.SaddleBrown;
             panel9.Location = new Point(512, 227);
             panel9.Name = "panel9";
-            panel9.Size = new Size(5, 57);
+            panel9.Size = new Size(5, 49);
             panel9.TabIndex = 9;
             // 
             // Login
@@ -183,13 +183,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Beige;
             ClientSize = new Size(800, 450);
+            Controls.Add(panel8);
+            Controls.Add(panel2);
             Controls.Add(panel9);
             Controls.Add(panel7);
-            Controls.Add(panel8);
             Controls.Add(panel5);
             Controls.Add(panel4);
             Controls.Add(panel3);
-            Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(label1);
             Controls.Add(btnJoin);

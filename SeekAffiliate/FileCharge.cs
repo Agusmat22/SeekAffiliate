@@ -18,13 +18,13 @@ namespace SeekAffiliate
     {
         private string filePath;
         private List<int> listPosition;
-        private List<string> listCompanies;
         string selectCompany;
 
         public FileCharge()
         {
             InitializeComponent();
             filePath = "";
+            listPosition = new List<int>(); 
 
 
         }
@@ -55,12 +55,12 @@ namespace SeekAffiliate
         private void button1_Click(object sender, EventArgs e)
         {
             bool inputName = int.TryParse(this.txbPosName.Text, out int posName);
-            bool inputSurname = int.TryParse(this.txbPosName.Text, out int posSurname);
-            bool inputEntity = int.TryParse(this.txbPosName.Text, out int posEntity);
-            bool inputNumber = int.TryParse(this.txbPosName.Text, out int posNumber);
-            bool inputIntern = int.TryParse(this.txbPosName.Text, out int posIntern);
-            bool inputTypeDu = int.TryParse(this.txbPosName.Text, out int posTypeDu);
-            bool inputDu = int.TryParse(this.txbPosName.Text, out int posDu);
+            bool inputSurname = int.TryParse(this.txbPosSurname.Text, out int posSurname);
+            bool inputEntity = int.TryParse(this.txbPosEntity.Text, out int posEntity);
+            bool inputNumber = int.TryParse(this.txbPosNumber.Text, out int posNumber);
+            bool inputIntern = int.TryParse(this.txbPosIntern.Text, out int posIntern);
+            bool inputTypeDu = int.TryParse(this.txbPosTypeDu.Text, out int posTypeDu);
+            bool inputDu = int.TryParse(this.txbPosDu.Text, out int posDu);
 
 
             if (filePath != "")
@@ -97,6 +97,7 @@ namespace SeekAffiliate
             //this.Hide();
         }
 
+        //Label for add company
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             CompanyRegister companyRegister = new CompanyRegister();
@@ -108,7 +109,7 @@ namespace SeekAffiliate
             {
                 //I get the object than contain the positions and I save whithin of json
                 string message = Functions.AddCompanyJson(companyRegister.GetPositions());
-                //Functions.ChargeCompaniesPos("listCompanies");
+
                 this.cmbCompany.DataSource = Functions.ListNameCompanies();
                 MessageBox.Show(message);
             }
@@ -147,6 +148,7 @@ namespace SeekAffiliate
 
         }
 
+        //Label for remove Company
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             bool removeCompanie = Functions.RemoveCompany(selectCompany);
@@ -154,7 +156,8 @@ namespace SeekAffiliate
             if (removeCompanie)
             {
                 this.cmbCompany.DataSource = Functions.ListNameCompanies();
-                MessageBox.Show($"Empresa *{selectCompany}* elimnada. ");
+                MessageBox.Show($"Empresa elimnada. ");
+
 
             }
             else

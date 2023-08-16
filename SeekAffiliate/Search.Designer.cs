@@ -188,8 +188,9 @@
             btnCancelSearch.Name = "btnCancelSearch";
             btnCancelSearch.Size = new Size(99, 31);
             btnCancelSearch.TabIndex = 12;
-            btnCancelSearch.Text = "SALIR";
+            btnCancelSearch.Text = "VOLVER";
             btnCancelSearch.UseVisualStyleBackColor = false;
+            btnCancelSearch.Click += btnCancelSearch_Click;
             // 
             // btnSearch
             // 
