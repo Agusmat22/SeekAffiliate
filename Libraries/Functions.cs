@@ -156,22 +156,7 @@ namespace Libraries
 
                 if (File.Exists(jsonFilePath))
                 {
-                    /*
-                    List<Company> list = new List<Company>();
-
-                    string jsonContent = File.ReadAllText(jsonFilePath);
-
-                    listCompanies.Add(companyJoin);
-
-
-                    // Add the new company to the list
-                    //list.Add(company);
-
-                    // Serialize the updated list of companies back to JSON
-                    string updatedJson = JsonConvert.SerializeObject(listCompanies, Formatting.Indented);
-
-                    // Write the updated JSON content back to the file
-                    File.WriteAllText(jsonFilePath, updatedJson);*/
+                   
                     listCompanies.Add(companyJoin);
                     SaveCompanyJson();
 
@@ -197,11 +182,6 @@ namespace Libraries
         {
             string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileNameCompanies);
 
-            //string jsonContent = File.ReadAllText(jsonFilePath);
-
-            //listCompanies.Add(companyJoin);
-
-
             // Serialize the updated list of companies back to JSON
             string updatedJson = JsonConvert.SerializeObject(listCompanies, Formatting.Indented);
 
@@ -209,6 +189,7 @@ namespace Libraries
             File.WriteAllText(jsonFilePath, updatedJson);
         }
 
+        
 
         public static bool RemoveCompany(string name)
         {
@@ -319,7 +300,7 @@ namespace Libraries
                 foreach (Affiliate affiliate in listAffiliate)
                 {
                     //Indicated for accept until 30 affiliates
-                    if (amountAffiliateLocated < 30)
+                    if (amountAffiliateLocated < 20)
                     {
 
                         if (BuscarCoincidencia(affiliate.GetName,data))
@@ -327,6 +308,11 @@ namespace Libraries
                             listAffiliateLocated.Add(affiliate);
                             amountAffiliateLocated += 1;
                         }
+                    }
+                    else
+                    {
+                        break;
+                        
                     }
 
                     
@@ -370,9 +356,14 @@ namespace Libraries
 
             foreach (string fragmentos in termBusqueda)
             {
-                if (cadena.ToLower().IndexOf(fragmentos.ToLower()) != -1)
+               
+                if (cadena.ToLower().Contains(fragmentos.ToLower()))
                 {
                     cantTerminosEncotrados++;
+                }
+                else
+                {
+                    break;
                 }
 
             }
@@ -387,17 +378,15 @@ namespace Libraries
 
         }
         
-        //Guarda un afiliado en un archivo CSV
-        public static bool DataSaveAffiliate(string name,string surname, string entity, string intern, TypeDu typeDocument, string dni, string number,string filePath)
+        public static bool AddAFfiliate(Affiliate af)
         {
             try
             {
-                using (StreamWriter writer = new StreamWriter(filePath,true))
-                {
-                    writer.WriteLine($"99;{entity};{number};{intern};{surname};{name};'';'';'';'';'';'';{typeDocument};{dni};"); 
-                }
+                listAffiliate.Add(af);
+                CreateJson();
                 return true;
-            } 
+
+            }
             catch (Exception ex) 
             { 
                 return false;

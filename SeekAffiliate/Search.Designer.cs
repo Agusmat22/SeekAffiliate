@@ -270,6 +270,7 @@
             Name = "Search";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Search";
+            Load += Search_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

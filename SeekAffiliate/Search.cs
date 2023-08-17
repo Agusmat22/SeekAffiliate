@@ -43,7 +43,7 @@ namespace SeekAffiliate
 
             }
 
-
+            dataGridView1.Rows.Clear();
             affiliateList = Functions.GetAffiliate(dataJoin, dataType);
 
             foreach (Affiliate af in affiliateList)
@@ -63,6 +63,11 @@ namespace SeekAffiliate
         private void btnCancelSearch_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void Search_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

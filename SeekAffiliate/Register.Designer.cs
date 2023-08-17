@@ -61,6 +61,7 @@
             // 
             // txbEntityRegister
             // 
+            txbEntityRegister.Cursor = Cursors.IBeam;
             txbEntityRegister.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             txbEntityRegister.Location = new Point(451, 63);
             txbEntityRegister.Name = "txbEntityRegister";

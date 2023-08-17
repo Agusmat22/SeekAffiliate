@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Libraries;
+using Entities;
 
 namespace SeekAffiliate
 {
@@ -35,30 +36,32 @@ namespace SeekAffiliate
             string dniNumber = this.txbNDniRegister.Text;
 
             //pongo explicito el ENUMERATE para recibir el dato
-            TypeDu typeDu = (TypeDu)this.cmbTypeDu.SelectedItem;
+            string typeDu = this.cmbTypeDu.SelectedItem.ToString();
 
-            //JOB
-            string filePath = "C:\\Users\\usuario\\Desktop\\afi\\mdaPrueba.csv";
-            string filePath2 = "C:\\Users\\Lisandro\\Desktop\\App Buscador\\afiMaestro";
-            //Home
+            string completName = name + " " + surName;
 
-            bool saveState = Functions.DataSaveAffiliate(name, surName, entity, inter, typeDu, dniNumber, affiliateNumber, filePath2);
+            Affiliate affiliate = new Affiliate(completName,entity,inter,typeDu,dniNumber,affiliateNumber);
 
-            if (saveState)
-            {
+            bool addValidation = Functions.AddAFfiliate(affiliate);
+
+            if (addValidation) 
+            { 
                 DialogResult = DialogResult.OK;
-
+            
             }
             else
             {
                 DialogResult = DialogResult.Abort;
             }
+            
+
+            
 
         }
 
         private void btnCancelRegister_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            DialogResult = DialogResult.Cancel;
         }
     }
 }
