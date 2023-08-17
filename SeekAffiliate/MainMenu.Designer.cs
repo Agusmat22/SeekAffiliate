@@ -31,7 +31,6 @@
             menuStrip1 = new MenuStrip();
             afiliadoToolStripMenuItem = new ToolStripMenuItem();
             chargeToolStripMenuItem = new ToolStripMenuItem();
-            deleteToolStripMenuItem = new ToolStripMenuItem();
             searchToolStripMenuItem1 = new ToolStripMenuItem();
             systemToolStripMenuItem = new ToolStripMenuItem();
             chargeFileToolStripMenuItem1 = new ToolStripMenuItem();
@@ -57,7 +56,7 @@
             // afiliadoToolStripMenuItem
             // 
             afiliadoToolStripMenuItem.BackColor = Color.Sienna;
-            afiliadoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { chargeToolStripMenuItem, deleteToolStripMenuItem, searchToolStripMenuItem1 });
+            afiliadoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { chargeToolStripMenuItem, searchToolStripMenuItem1 });
             afiliadoToolStripMenuItem.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             afiliadoToolStripMenuItem.ForeColor = Color.White;
             afiliadoToolStripMenuItem.Name = "afiliadoToolStripMenuItem";
@@ -71,14 +70,6 @@
             chargeToolStripMenuItem.Size = new Size(180, 24);
             chargeToolStripMenuItem.Text = "Cargar";
             chargeToolStripMenuItem.Click += chargeToolStripMenuItem_Click_1;
-            // 
-            // deleteToolStripMenuItem
-            // 
-            deleteToolStripMenuItem.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new Size(180, 24);
-            deleteToolStripMenuItem.Text = "Eliminar";
-            deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
             // 
             // searchToolStripMenuItem1
             // 
@@ -101,7 +92,7 @@
             // 
             chargeFileToolStripMenuItem1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             chargeFileToolStripMenuItem1.Name = "chargeFileToolStripMenuItem1";
-            chargeFileToolStripMenuItem1.Size = new Size(180, 24);
+            chargeFileToolStripMenuItem1.Size = new Size(174, 24);
             chargeFileToolStripMenuItem1.Text = "Cargar archivo";
             chargeFileToolStripMenuItem1.Click += chargeFileToolStripMenuItem1_Click;
             // 
@@ -148,7 +139,6 @@
         private ToolStripMenuItem chargeFileToolStripMenuItem1;
         private Label label1;
         private System.Data.Entity.Core.EntityClient.EntityConnection entityConnection1;
-        private ToolStripMenuItem deleteToolStripMenuItem;
         private ToolStripMenuItem searchToolStripMenuItem1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }

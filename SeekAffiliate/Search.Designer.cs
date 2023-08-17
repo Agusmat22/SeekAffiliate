@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             dataGridView1 = new DataGridView();
             EntityColumn = new DataGridViewTextBoxColumn();
             NameColumn = new DataGridViewTextBoxColumn();
@@ -46,6 +46,7 @@
             txbSearch = new TextBox();
             groupBox1 = new GroupBox();
             pictureBox1 = new PictureBox();
+            linkLbDelete = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -55,33 +56,33 @@
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.Bisque;
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Tan;
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = Color.Bisque;
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = Color.Tan;
+            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             dataGridView1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.BackgroundColor = Color.Linen;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.Sienna;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.Sienna;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = Color.Sienna;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.SelectionBackColor = Color.Sienna;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dataGridView1.ColumnHeadersHeight = 35;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { EntityColumn, NameColumn, NumberColumn, InternColumn, TypeDuColumn, DuColumn });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = Color.Linen;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.Tan;
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = Color.Linen;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = Color.Tan;
+            dataGridViewCellStyle9.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle9;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.Location = new Point(12, 241);
             dataGridView1.Name = "dataGridView1";
@@ -256,6 +257,19 @@
             pictureBox1.TabIndex = 18;
             pictureBox1.TabStop = false;
             // 
+            // linkLbDelete
+            // 
+            linkLbDelete.AutoSize = true;
+            linkLbDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            linkLbDelete.LinkColor = Color.Red;
+            linkLbDelete.Location = new Point(814, 12);
+            linkLbDelete.Name = "linkLbDelete";
+            linkLbDelete.Size = new Size(102, 17);
+            linkLbDelete.TabIndex = 18;
+            linkLbDelete.TabStop = true;
+            linkLbDelete.Text = "Eliminar Afiliado";
+            linkLbDelete.LinkClicked += linkLbDelete_LinkClicked;
+            // 
             // Search
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -263,6 +277,7 @@
             BackColor = Color.Beige;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(928, 510);
+            Controls.Add(linkLbDelete);
             Controls.Add(groupBox1);
             Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -270,12 +285,12 @@
             Name = "Search";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Search";
-            Load += Search_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -295,5 +310,6 @@
         private DataGridViewTextBoxColumn DuColumn;
         private GroupBox groupBox1;
         private PictureBox pictureBox1;
+        private LinkLabel linkLbDelete;
     }
 }

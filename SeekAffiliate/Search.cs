@@ -65,9 +65,31 @@ namespace SeekAffiliate
             DialogResult = DialogResult.Cancel;
         }
 
-        private void Search_Load(object sender, EventArgs e)
+        private void linkLbDelete_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                int rowIndex = dataGridView1.SelectedCells[0].RowIndex;
+                int columnIndex = dataGridView1.SelectedCells[0].ColumnIndex;
+                DataGridViewCell cell = dataGridView1.Rows[rowIndex].Cells[columnIndex];
 
+                string cellValue = cell.Value.ToString();
+                bool removeValue = Functions.RemoveAffiliate(cellValue);
+
+                if (removeValue) 
+                { 
+                    MessageBox.Show("Eliminado correctamente");
+                    dataGridView1.Rows.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Error, seleccione un item");
+                }
+            }
+            
         }
+
+        
+
     }
 }

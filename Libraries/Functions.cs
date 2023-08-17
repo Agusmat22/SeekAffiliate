@@ -394,6 +394,22 @@ namespace Libraries
             
         }
 
+        public static bool RemoveAffiliate(string dni)
+        {
+            foreach (Affiliate af in listAffiliate)
+            {
+                if (af.GetDni == dni)
+                 {
+                    listAffiliate.Remove(af);
+                    //This method save the JSON file after the changed
+                    CreateJson();
+                    return true;
+                }
+            }
+            return false;
+
+        }
+
         //this method calculate amount of entity in total
         public static int CalculateAmountByEntity(string entity)
         {
