@@ -199,6 +199,7 @@
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
+            Load += Login_Load;
             panel7.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

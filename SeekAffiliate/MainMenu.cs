@@ -29,14 +29,7 @@ namespace SeekAffiliate
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
-            string valueMessage = Functions.GetJson("listAffiliates");
-
-            if (valueMessage != "")
-            {
-                MessageBox.Show(valueMessage);
-            }
-
-
+            
 
         }
 
@@ -62,11 +55,6 @@ namespace SeekAffiliate
 
             DialogResult dialogResult = fileCharge.ShowDialog();
 
-            if (dialogResult == DialogResult.Abort)
-            {
-                MessageBox.Show("Carga cancelada");
-
-            }
 
         }
         //This method allow register a affiliate
@@ -94,9 +82,17 @@ namespace SeekAffiliate
 
         }
 
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            UserRegister userRegister = new UserRegister();
 
+            DialogResult dialogResult = userRegister.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                MessageBox.Show("Usuario registrado");
+            }
+            
         }
     }
 }

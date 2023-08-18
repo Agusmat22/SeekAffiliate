@@ -24,7 +24,7 @@ namespace SeekAffiliate
         {
             InitializeComponent();
             filePath = "";
-            listPosition = new List<int>(); 
+            listPosition = new List<int>();
 
 
         }

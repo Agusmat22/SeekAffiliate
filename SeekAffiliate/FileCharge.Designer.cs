@@ -58,6 +58,7 @@
             // btnSelect
             // 
             btnSelect.BackColor = Color.SaddleBrown;
+            btnSelect.Cursor = Cursors.Hand;
             btnSelect.FlatStyle = FlatStyle.Flat;
             btnSelect.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnSelect.Location = new Point(57, 109);
@@ -91,6 +92,7 @@
             // button1
             // 
             button1.BackColor = Color.BurlyWood;
+            button1.Cursor = Cursors.Hand;
             button1.FlatAppearance.MouseOverBackColor = Color.Peru;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -105,6 +107,7 @@
             // button3
             // 
             button3.BackColor = Color.BurlyWood;
+            button3.Cursor = Cursors.Hand;
             button3.FlatAppearance.MouseOverBackColor = Color.Peru;
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -112,7 +115,7 @@
             button3.Name = "button3";
             button3.Size = new Size(81, 40);
             button3.TabIndex = 10;
-            button3.Text = "Cancelar";
+            button3.Text = "Volver";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 

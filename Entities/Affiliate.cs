@@ -9,7 +9,6 @@ namespace Entities
         DU,
         LC,
         LE,
-
     }
 
     public class Affiliate

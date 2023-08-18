@@ -1,3 +1,6 @@
+using Entities;
+using Libraries;
+
 namespace SeekAffiliate
 {
     public partial class Login : Form
@@ -5,6 +8,8 @@ namespace SeekAffiliate
         //maximos intentos
         private int maxAttempts = 3;
         private int attempts;
+        private User user;
+
 
         public Login()
         {
@@ -32,6 +37,7 @@ namespace SeekAffiliate
                 }
                 else
                 {
+                    //addition of intents
                     attempts++;
                     MessageBox.Show($"Error ingrese nuevamente la clave. Intento: {attempts}");
                 }
@@ -46,6 +52,14 @@ namespace SeekAffiliate
 
         }
 
+        private void Login_Load(object sender, EventArgs e)
+        {
+            string valueMessage = Functions.GetJson("listAffiliates");
 
+            if (valueMessage != "")
+            {
+                MessageBox.Show(valueMessage);
+            }
+        }
     }
 }
