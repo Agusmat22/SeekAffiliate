@@ -1,8 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using System.Xml;
+
+
+using System.Text.Json;
+using Newtonsoft.Json;
+
 
 namespace Entities
 {
@@ -16,13 +25,14 @@ namespace Entities
     {
         string user;
         string password;
-        TypeUser typeUser;
+        string typeUser;
 
-        public User(string user,string password,TypeUser typeUser) 
+        public User(string user,string password,string typeUser) 
         { 
             this.user = user;
             this.password = password;
             this.typeUser = typeUser;
+            
         }
 
         //This is for validation the password
@@ -51,5 +61,11 @@ namespace Entities
             }
             return false;
         }
+        /*
+        public string ToJson()
+        {
+            
+            return JsonConvert.SerializeObject(new { Name = this.user, Password = this.password }, Formatting.Indented);
+        }*/
     }
 }

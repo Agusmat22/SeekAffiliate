@@ -18,10 +18,12 @@ namespace Libraries
     {
         const string fileNameAffiliates = "listAffiliates";
         const string fileNameCompanies = "listCompanies";
+        const string fileNameUser = "listUser";
 
         static List<Affiliate> listAffiliate;
         static List<Affiliate> listAffiliateLocated;
         static List<Company> listCompanies;
+        static List<User> listUser;
         static Affiliate affiliate;
         static Company company;
         static int amountAffiliateLocated;
@@ -32,6 +34,7 @@ namespace Libraries
             listAffiliate = new List<Affiliate>();
             listAffiliateLocated = new List<Affiliate>();
             listCompanies = new List<Company>();
+            listUser = new List<User>();
             amountAffiliateLocated = 0;
 
             
@@ -111,9 +114,43 @@ namespace Libraries
             {
 
             }
+        }
 
+        //REVISAR FALTA TERMINARLA
+        /*
+        public static void ChargerUsers()
+        {
+            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileNameUser);
+            try
+            {
+                if (File.Exists(jsonFilePath))
+                {
+                    
+
+                    string jsonContent = File.ReadAllText(jsonFilePath);
+
+                    JsonDocument doc = JsonDocument.Parse(jsonContent);
+
+                    if (doc.RootElement.ValueKind == JsonValueKind.Array)
+                    {
+                        foreach (JsonElement element in doc.RootElement.EnumerateArray())
+                        {
+                            string userName = element.GetProperty()
+
+
+                           
+                        }
+
+                    }
+                }
+            }
+            catch
+            {
+
+            }
 
         }
+        */
         //this method create a json
         public static string CreateJson()
         {
@@ -121,7 +158,7 @@ namespace Libraries
 
             // Serializa la lista de afiliados a formato JSON
             string jsonData = JsonConvert.SerializeObject(listAffiliate, Formatting.Indented);
-
+            
             // Escribe el JSON en el archivo
             File.WriteAllText(jsonFilePath, jsonData);
 
@@ -131,7 +168,7 @@ namespace Libraries
         }
 
 
-        //overCharger the function for read dictionary
+        //overCharger the function for read Company
         public static string CreateJson(Company company)
         {
             listCompanies.Add(company);
@@ -144,6 +181,25 @@ namespace Libraries
              File.WriteAllText(jsonFilePath, jsonData);
 
             //return $"Se han guardado {listAffiliate.Count} afiliados en {jsonFileName}";
+            return $"Se han guardado {jsonFilePath}";
+
+        }
+
+        //overCharge the function for read User
+        public static string CreateJson(User userNew)
+        {
+            //Here I addied a new User to list
+            AddUser(userNew);
+
+            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileNameUser);
+
+            // Serializa la lista de afiliados a formato JSON
+            string jsonData = JsonConvert.SerializeObject(listUser, Formatting.Indented);
+
+
+            // Escribe el JSON en el archivo
+            File.WriteAllText(jsonFilePath, jsonData);
+
             return $"Se han guardado {jsonFilePath}";
 
         }
@@ -326,6 +382,7 @@ namespace Libraries
                     if (Regex.IsMatch(affiliate.GetNumber, data))
                     {
                         listAffiliateLocated.Add(affiliate);
+                        break;
                     }
 
                 }
@@ -338,7 +395,9 @@ namespace Libraries
                     if (Regex.IsMatch(affiliate.GetDni, data))
                     {
                         listAffiliateLocated.Add(affiliate);
+                        break;
                     }
+                    
 
                 }
             }
@@ -346,6 +405,9 @@ namespace Libraries
             amountAffiliateLocated = 0;
             return listAffiliateLocated;
         }
+        
+        
+
 
         //esta funcion busca coincidencia de string para buscar un nombre
         private static bool BuscarCoincidencia(string cadena, string terminoBusqueda)
@@ -407,6 +469,21 @@ namespace Libraries
                 }
             }
             return false;
+
+        }
+
+        public static bool AddUser(User userNew)
+        {
+            try
+            {
+                CreateJson(userNew);
+                return true;
+
+            }
+            catch 
+            { 
+                return false; 
+            }
 
         }
 

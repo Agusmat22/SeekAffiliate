@@ -9,14 +9,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Entities;
 
 namespace SeekAffiliate
 {
     public partial class MainMenu : Form
     {
+        private User af;
+
+        //AGREGAR DESPUES EL AFILIADO PARA OBTENERLO
         public MainMenu()
         {
             InitializeComponent();
+            //this.af = af;
         }
 
 

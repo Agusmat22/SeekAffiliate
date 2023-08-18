@@ -108,6 +108,7 @@
             btnRegister.TabIndex = 8;
             btnRegister.Text = "Registrar";
             btnRegister.UseVisualStyleBackColor = false;
+            btnRegister.Click += btnRegister_Click;
             // 
             // btnCancel
             // 
@@ -158,7 +159,8 @@
             // 
             // cmbTypeUser
             // 
-            cmbTypeUser.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            cmbTypeUser.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTypeUser.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cmbTypeUser.FormattingEnabled = true;
             cmbTypeUser.Location = new Point(232, 127);
             cmbTypeUser.Name = "cmbTypeUser";
