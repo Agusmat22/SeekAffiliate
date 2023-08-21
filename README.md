@@ -1,6 +1,6 @@
 <!-- ENCABEZADO TITULO -->
 # Project: Affiliate Management 
-![mi proyecto](/pics/1.png)
+![mi proyecto](/pics/1.PNG)
 
 
 ## Creator:
