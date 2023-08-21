@@ -11,6 +11,7 @@ using System.Xml;
 
 using System.Text.Json;
 using Newtonsoft.Json;
+using BCrypt.Net;
 
 
 namespace Entities
@@ -24,33 +25,35 @@ namespace Entities
     public class User
     {
         string user;
-        string password;
+        string hashPassword;
         string typeUser;
 
-        public User(string user,string password,string typeUser) 
+        public User(string user,string hashPassword, string typeUser) 
         { 
-            this.user = user;
-            this.password = password;
+            this.user = user.ToUpper();
+            this.hashPassword = hashPassword;
             this.typeUser = typeUser;
             
         }
 
-        //This is for validation the password
-        public static bool operator ==(User user,string pass)
-        {
-            return user.password == pass;
-        }
-
-        
-        
-        public static bool operator !=(User user, string pass)
-        {
-            return user.password != pass;
-        }
-
+      
         public string GetUser
         {
             get { return user; }
+        }
+        public string GetHashPassword
+        {
+            get { return hashPassword; }
+        }
+
+        public string GetTypeUser
+        {
+            get { return typeUser; }
+        }
+
+        public string Show()
+        {
+            return $"Hola mi nombre es {user}";
         }
 
         public bool AccessValidation()
@@ -61,11 +64,14 @@ namespace Entities
             }
             return false;
         }
-        /*
-        public string ToJson()
+
+        public bool PassValidation(string passJoin)
         {
-            
-            return JsonConvert.SerializeObject(new { Name = this.user, Password = this.password }, Formatting.Indented);
-        }*/
+            return BCrypt.Net.BCrypt.Verify(passJoin, hashPassword);
+        }
+
+
+
+
     }
 }

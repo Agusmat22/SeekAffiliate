@@ -38,24 +38,30 @@ namespace SeekAffiliate
             //pongo explicito el ENUMERATE para recibir el dato
             string typeDu = this.cmbTypeDu.SelectedItem.ToString();
 
-            string completName = name + " " + surName;
+            if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(surName) && !string.IsNullOrEmpty(entity)
+                && !string.IsNullOrEmpty(affiliateNumber) && !string.IsNullOrEmpty(inter) && !string.IsNullOrEmpty(dniNumber))
+            {
+                string completName = name + " " + surName;
 
-            Affiliate affiliate = new Affiliate(completName,entity,inter,typeDu,dniNumber,affiliateNumber);
+                Affiliate affiliate = new Affiliate(completName.Trim(), entity.Trim(), inter.Trim(), typeDu.Trim()
+                    , dniNumber.Trim(), affiliateNumber.Trim());
 
-            bool addValidation = Functions.AddAFfiliate(affiliate);
+                bool addValidation = Functions.AddAFfiliate(affiliate);
 
-            if (addValidation) 
-            { 
-                DialogResult = DialogResult.OK;
-            
+                if (addValidation)
+                {
+                    DialogResult = DialogResult.OK;
+
+                }
+                else
+                {
+                    DialogResult = DialogResult.Abort;
+                }
             }
             else
             {
-                DialogResult = DialogResult.Abort;
+                MessageBox.Show("Error debe completar todos los campos");
             }
-            
-
-            
 
         }
 

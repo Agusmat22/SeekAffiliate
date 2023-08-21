@@ -34,12 +34,12 @@
             searchToolStripMenuItem1 = new ToolStripMenuItem();
             systemToolStripMenuItem = new ToolStripMenuItem();
             chargeFileToolStripMenuItem1 = new ToolStripMenuItem();
-            label1 = new Label();
-            entityConnection1 = new System.Data.Entity.Core.EntityClient.EntityConnection();
-            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             toolStripMenuItem1 = new ToolStripMenuItem();
             agregarToolStripMenuItem = new ToolStripMenuItem();
             eliminarToolStripMenuItem = new ToolStripMenuItem();
+            label1 = new Label();
+            entityConnection1 = new System.Data.Entity.Core.EntityClient.EntityConnection();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -70,7 +70,7 @@
             // 
             chargeToolStripMenuItem.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             chargeToolStripMenuItem.Name = "chargeToolStripMenuItem";
-            chargeToolStripMenuItem.Size = new Size(122, 24);
+            chargeToolStripMenuItem.Size = new Size(123, 24);
             chargeToolStripMenuItem.Text = "Cargar";
             chargeToolStripMenuItem.Click += chargeToolStripMenuItem_Click_1;
             // 
@@ -78,7 +78,7 @@
             // 
             searchToolStripMenuItem1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             searchToolStripMenuItem1.Name = "searchToolStripMenuItem1";
-            searchToolStripMenuItem1.Size = new Size(122, 24);
+            searchToolStripMenuItem1.Size = new Size(123, 24);
             searchToolStripMenuItem1.Text = "Buscar";
             searchToolStripMenuItem1.Click += searchToolStripMenuItem1_Click;
             // 
@@ -95,21 +95,9 @@
             // 
             chargeFileToolStripMenuItem1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             chargeFileToolStripMenuItem1.Name = "chargeFileToolStripMenuItem1";
-            chargeFileToolStripMenuItem1.Size = new Size(180, 24);
+            chargeFileToolStripMenuItem1.Size = new Size(175, 24);
             chargeFileToolStripMenuItem1.Text = "Cargar archivo";
             chargeFileToolStripMenuItem1.Click += chargeFileToolStripMenuItem1_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe Print", 30F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.SaddleBrown;
-            label1.Location = new Point(215, 97);
-            label1.Name = "label1";
-            label1.Size = new Size(362, 71);
-            label1.TabIndex = 5;
-            label1.Text = "Gestion Afiliados";
             // 
             // toolStripMenuItem1
             // 
@@ -134,6 +122,19 @@
             eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
             eliminarToolStripMenuItem.Size = new Size(180, 24);
             eliminarToolStripMenuItem.Text = "Eliminar";
+            eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe Print", 30F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.SaddleBrown;
+            label1.Location = new Point(215, 97);
+            label1.Name = "label1";
+            label1.Size = new Size(362, 71);
+            label1.TabIndex = 5;
+            label1.Text = "Gestion Afiliados";
             // 
             // MainMenu
             // 

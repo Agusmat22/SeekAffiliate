@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using Entities;
 using Libraries;
 
+using BCrypt.Net;
+
+
 namespace SeekAffiliate
 {
     public partial class UserRegister : Form
@@ -39,10 +42,20 @@ namespace SeekAffiliate
             string password = this.txbPass.Text;
             string passwordAgain = this.txbPassAgain.Text;
 
-            if (password == passwordAgain && !string.IsNullOrEmpty(userName))
+            //Here I am encrypting the password for that nobody can access
+            string hashPassword = BCrypt.Net.BCrypt.HashPassword(password);
+
+
+            if (!string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(passwordAgain)
+                && password == passwordAgain && !string.IsNullOrEmpty(userName))
             {
-                user = new User(userName, password,typeUser);
+                user = new User(userName.Trim(), hashPassword.Trim(), typeUser);
                 Functions.AddUser(user);
+                DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Error en los datos ingresados");
             }
         }
     }

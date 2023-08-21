@@ -56,6 +56,7 @@
             txbPass.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txbPass.Location = new Point(82, 235);
             txbPass.Name = "txbPass";
+            txbPass.PasswordChar = '*';
             txbPass.PlaceholderText = "Nueva Contraseña";
             txbPass.Size = new Size(294, 29);
             txbPass.TabIndex = 1;
@@ -66,6 +67,7 @@
             txbPassAgain.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txbPassAgain.Location = new Point(82, 283);
             txbPassAgain.Name = "txbPassAgain";
+            txbPassAgain.PasswordChar = '*';
             txbPassAgain.PlaceholderText = "Ingresar Nuevamente";
             txbPassAgain.Size = new Size(294, 29);
             txbPassAgain.TabIndex = 2;
@@ -174,7 +176,9 @@
             BackColor = Color.Beige;
             ClientSize = new Size(800, 450);
             Controls.Add(groupBox1);
+            MaximizeBox = false;
             Name = "UserRegister";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "UserRegister";
             Load += UserRegister_Load;
             groupBox1.ResumeLayout(false);

@@ -51,7 +51,7 @@
             txbUser.Cursor = Cursors.IBeam;
             txbUser.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             txbUser.ForeColor = Color.Black;
-            txbUser.Location = new Point(265, 132);
+            txbUser.Location = new Point(267, 144);
             txbUser.Multiline = true;
             txbUser.Name = "txbUser";
             txbUser.PlaceholderText = "Usuario";
@@ -65,7 +65,7 @@
             txbPassword.BorderStyle = BorderStyle.None;
             txbPassword.Cursor = Cursors.IBeam;
             txbPassword.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            txbPassword.Location = new Point(265, 230);
+            txbPassword.Location = new Point(267, 242);
             txbPassword.Multiline = true;
             txbPassword.Name = "txbPassword";
             txbPassword.PasswordChar = '*';
@@ -73,6 +73,7 @@
             txbPassword.Size = new Size(250, 35);
             txbPassword.TabIndex = 2;
             txbPassword.TextAlign = HorizontalAlignment.Center;
+            txbPassword.KeyPress += txbPassword_KeyPress;
             // 
             // btnJoin
             // 
@@ -83,7 +84,7 @@
             btnJoin.FlatStyle = FlatStyle.Flat;
             btnJoin.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnJoin.ForeColor = Color.White;
-            btnJoin.Location = new Point(342, 350);
+            btnJoin.Location = new Point(342, 338);
             btnJoin.Name = "btnJoin";
             btnJoin.Size = new Size(106, 43);
             btnJoin.TabIndex = 3;
@@ -106,7 +107,7 @@
             // panel1
             // 
             panel1.BackColor = Color.SaddleBrown;
-            panel1.Location = new Point(262, 129);
+            panel1.Location = new Point(264, 141);
             panel1.Name = "panel1";
             panel1.Size = new Size(250, 5);
             panel1.TabIndex = 5;
@@ -114,7 +115,7 @@
             // panel2
             // 
             panel2.BackColor = Color.SaddleBrown;
-            panel2.Location = new Point(267, 164);
+            panel2.Location = new Point(269, 176);
             panel2.Name = "panel2";
             panel2.Size = new Size(250, 5);
             panel2.TabIndex = 6;
@@ -122,7 +123,7 @@
             // panel3
             // 
             panel3.BackColor = Color.SaddleBrown;
-            panel3.Location = new Point(262, 129);
+            panel3.Location = new Point(264, 141);
             panel3.Name = "panel3";
             panel3.Size = new Size(5, 40);
             panel3.TabIndex = 7;
@@ -130,7 +131,7 @@
             // panel4
             // 
             panel4.BackColor = Color.SaddleBrown;
-            panel4.Location = new Point(512, 129);
+            panel4.Location = new Point(514, 141);
             panel4.Name = "panel4";
             panel4.Size = new Size(5, 40);
             panel4.TabIndex = 8;
@@ -138,7 +139,7 @@
             // panel5
             // 
             panel5.BackColor = Color.SaddleBrown;
-            panel5.Location = new Point(262, 227);
+            panel5.Location = new Point(264, 239);
             panel5.Name = "panel5";
             panel5.Size = new Size(5, 40);
             panel5.TabIndex = 8;
@@ -155,7 +156,7 @@
             // 
             panel7.BackColor = Color.SaddleBrown;
             panel7.Controls.Add(panel6);
-            panel7.Location = new Point(265, 227);
+            panel7.Location = new Point(267, 239);
             panel7.Name = "panel7";
             panel7.Size = new Size(250, 5);
             panel7.TabIndex = 7;
@@ -163,7 +164,7 @@
             // panel8
             // 
             panel8.BackColor = Color.SaddleBrown;
-            panel8.Location = new Point(267, 262);
+            panel8.Location = new Point(269, 274);
             panel8.Name = "panel8";
             panel8.Size = new Size(250, 5);
             panel8.TabIndex = 10;
@@ -171,7 +172,7 @@
             // panel9
             // 
             panel9.BackColor = Color.SaddleBrown;
-            panel9.Location = new Point(512, 227);
+            panel9.Location = new Point(514, 239);
             panel9.Name = "panel9";
             panel9.Size = new Size(5, 40);
             panel9.TabIndex = 9;

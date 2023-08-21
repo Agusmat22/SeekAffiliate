@@ -106,6 +106,7 @@
             txbPosSurname.Name = "txbPosSurname";
             txbPosSurname.Size = new Size(27, 25);
             txbPosSurname.TabIndex = 24;
+            txbPosSurname.KeyPress += txbPosSurname_KeyPress;
             // 
             // label8
             // 
@@ -136,6 +137,7 @@
             txbPosDu.Name = "txbPosDu";
             txbPosDu.Size = new Size(27, 25);
             txbPosDu.TabIndex = 16;
+            txbPosDu.KeyPress += txbPosDu_KeyPress;
             // 
             // label3
             // 
@@ -155,6 +157,7 @@
             txbPosTypeDu.Name = "txbPosTypeDu";
             txbPosTypeDu.Size = new Size(27, 25);
             txbPosTypeDu.TabIndex = 15;
+            txbPosTypeDu.KeyPress += txbPosTypeDu_KeyPress;
             // 
             // label4
             // 
@@ -174,6 +177,7 @@
             txbPosIntern.Name = "txbPosIntern";
             txbPosIntern.Size = new Size(27, 25);
             txbPosIntern.TabIndex = 14;
+            txbPosIntern.KeyPress += txbPosIntern_KeyPress;
             // 
             // label6
             // 
@@ -193,6 +197,7 @@
             txbPosNumber.Name = "txbPosNumber";
             txbPosNumber.Size = new Size(27, 25);
             txbPosNumber.TabIndex = 13;
+            txbPosNumber.KeyPress += txbPosNumber_KeyPress;
             // 
             // label5
             // 
@@ -212,6 +217,7 @@
             txbPosEntity.Name = "txbPosEntity";
             txbPosEntity.Size = new Size(27, 25);
             txbPosEntity.TabIndex = 12;
+            txbPosEntity.KeyPress += txbPosEntity_KeyPress;
             // 
             // txbPosName
             // 
@@ -220,6 +226,7 @@
             txbPosName.Name = "txbPosName";
             txbPosName.Size = new Size(27, 25);
             txbPosName.TabIndex = 11;
+            txbPosName.KeyPress += txbPosName_KeyPress;
             // 
             // button3
             // 
@@ -268,6 +275,8 @@
             Controls.Add(button1);
             Controls.Add(groupBox1);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "CompanyRegister";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CompanyRegister";

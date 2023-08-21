@@ -151,19 +151,90 @@ namespace SeekAffiliate
         //Label for remove Company
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            bool removeCompanie = Functions.RemoveCompany(selectCompany);
-
-            if (removeCompanie)
+            if (Functions.GetUser().AccessValidation())
             {
-                this.cmbCompany.DataSource = Functions.ListNameCompanies();
-                MessageBox.Show($"Empresa elimnada. ");
+                bool removeCompanie = Functions.RemoveCompany(selectCompany);
+
+                if (removeCompanie)
+                {
+                    this.cmbCompany.DataSource = Functions.ListNameCompanies();
+                    MessageBox.Show($"Empresa elimnada. ");
 
 
+                }
+                else
+                {
+                    MessageBox.Show($"No hay empresas registradas");
+
+                }
             }
             else
             {
-                MessageBox.Show($"No hay empresas registradas");
+                MessageBox.Show("No tienes acceso");
+            }
 
+        }
+
+        private void txbPosName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) || txbPosName.Text.Length > 1
+                && e.KeyChar != '\b')
+            {
+                e.Handled = true; // Evita que el carácter se ingrese en el TextBox
+            }
+        }
+
+        private void txbPosSurname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) || txbPosSurname.Text.Length > 1
+                && e.KeyChar != '\b')
+            {
+                e.Handled = true; // Evita que el carácter se ingrese en el TextBox
+            }
+        }
+
+        private void txbPosEntity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) || txbPosEntity.Text.Length > 1
+                && e.KeyChar != '\b')
+            {
+                e.Handled = true; // Evita que el carácter se ingrese en el TextBox
+            }
+        }
+
+        private void txbPosNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) || txbPosNumber.Text.Length > 1
+                && e.KeyChar != '\b')
+            {
+                e.Handled = true; // Evita que el carácter se ingrese en el TextBox
+            }
+        }
+
+        private void txbPosIntern_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) || txbPosIntern.Text.Length > 1
+                && e.KeyChar != '\b')
+            {
+                e.Handled = true; // Evita que el carácter se ingrese en el TextBox
+            }
+        }
+
+        private void txbPosTypeDu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) || txbPosTypeDu.Text.Length > 1
+                && e.KeyChar != '\b')
+            {
+                e.Handled = true; // Evita que el carácter se ingrese en el TextBox
+            }
+        }
+
+        private void txbPosDu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) || txbPosDu.Text.Length > 1
+                && e.KeyChar != '\b')
+            {
+                e.Handled = true; // Evita que el carácter se ingrese en el TextBox
             }
         }
     }

@@ -34,7 +34,7 @@ namespace SeekAffiliate
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
-            
+            //MessageBox.Show(Functions.GetUser().Show());
 
         }
 
@@ -89,15 +89,53 @@ namespace SeekAffiliate
 
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UserRegister userRegister = new UserRegister();
-
-            DialogResult dialogResult = userRegister.ShowDialog();
-
-            if (dialogResult == DialogResult.OK)
+            if (Functions.GetUser().AccessValidation())
             {
-                MessageBox.Show("Usuario registrado");
+                UserRegister userRegister = new UserRegister();
+
+                DialogResult dialogResult = userRegister.ShowDialog();
+
+                if (dialogResult == DialogResult.OK)
+                {
+                    MessageBox.Show("Usuario registrado");
+                }
+
             }
-            
+            else
+            {
+                MessageBox.Show("No tienes acceso");
+
+            }
+
+
+
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Functions.GetUser().AccessValidation())
+            {
+                RemoveUser removeUser = new RemoveUser();
+
+                DialogResult dialogResult = removeUser.ShowDialog();
+
+                if (dialogResult == DialogResult.OK)
+                {
+                    MessageBox.Show("Usuario eliminado");
+                }
+                else if (dialogResult == DialogResult.Cancel)
+                {
+                     MessageBox.Show("Operacion cancelada");
+                }
+                else
+                {
+                    MessageBox.Show("Error al internar eliminar el usuario");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No tienes acceso");
+            }
         }
     }
 }

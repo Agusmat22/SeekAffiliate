@@ -1,5 +1,7 @@
 using Entities;
 using Libraries;
+using BCrypt.Net;
+
 
 namespace SeekAffiliate
 {
@@ -18,13 +20,43 @@ namespace SeekAffiliate
 
         private void btnJoin_Click(object sender, EventArgs e)
         {
+            ValidateIncome();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            string valueMessage = Functions.GetJson("listAffiliates");
+            bool chargeUsersStatus = Functions.ChargerUsers();
+
+
+            if (valueMessage != "")
+            {
+                MessageBox.Show(valueMessage);
+            }
+            else if (chargeUsersStatus == false)
+            {
+                MessageBox.Show("ERROR al cargar los usuarios");
+            }
+        }
+
+        private void txbPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                ValidateIncome();  
+            }
+        }
+
+
+        private void ValidateIncome()
+        {
             string userJoined = this.txbUser.Text;
             string passJoined = this.txbPassword.Text;
 
 
             if (attempts < maxAttempts)
             {
-                if (userJoined.ToLower() == "agusmat" && passJoined.ToLower() == "12345")
+                if (Functions.ValidateUsers(userJoined, passJoined))
                 {
                     //user = User(userJoined.ToLower(),)
                     //inicializo el objeto de la interfaz menu
@@ -34,16 +66,14 @@ namespace SeekAffiliate
                     //escondo el login
                     this.Hide();
 
-
                 }
                 else
                 {
                     //addition of intents
                     attempts++;
                     MessageBox.Show($"Error ingrese nuevamente la clave. Intento: {attempts}");
+
                 }
-
-
             }
             else
             {
@@ -51,16 +81,6 @@ namespace SeekAffiliate
                 this.Close();
             }
 
-        }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-            string valueMessage = Functions.GetJson("listAffiliates");
-
-            if (valueMessage != "")
-            {
-                MessageBox.Show(valueMessage);
-            }
         }
     }
 }

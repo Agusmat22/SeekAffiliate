@@ -126,6 +126,7 @@
             txbPosName.Name = "txbPosName";
             txbPosName.Size = new Size(27, 25);
             txbPosName.TabIndex = 11;
+            txbPosName.KeyPress += txbPosName_KeyPress;
             // 
             // txbPosEntity
             // 
@@ -134,6 +135,7 @@
             txbPosEntity.Name = "txbPosEntity";
             txbPosEntity.Size = new Size(27, 25);
             txbPosEntity.TabIndex = 12;
+            txbPosEntity.KeyPress += txbPosEntity_KeyPress;
             // 
             // txbPosNumber
             // 
@@ -142,6 +144,7 @@
             txbPosNumber.Name = "txbPosNumber";
             txbPosNumber.Size = new Size(27, 25);
             txbPosNumber.TabIndex = 13;
+            txbPosNumber.KeyPress += txbPosNumber_KeyPress;
             // 
             // txbPosIntern
             // 
@@ -150,6 +153,7 @@
             txbPosIntern.Name = "txbPosIntern";
             txbPosIntern.Size = new Size(27, 25);
             txbPosIntern.TabIndex = 14;
+            txbPosIntern.KeyPress += txbPosIntern_KeyPress;
             // 
             // txbPosTypeDu
             // 
@@ -158,6 +162,7 @@
             txbPosTypeDu.Name = "txbPosTypeDu";
             txbPosTypeDu.Size = new Size(27, 25);
             txbPosTypeDu.TabIndex = 15;
+            txbPosTypeDu.KeyPress += txbPosTypeDu_KeyPress;
             // 
             // txbPosDu
             // 
@@ -166,6 +171,7 @@
             txbPosDu.Name = "txbPosDu";
             txbPosDu.Size = new Size(27, 25);
             txbPosDu.TabIndex = 16;
+            txbPosDu.KeyPress += txbPosDu_KeyPress;
             // 
             // lb
             // 
@@ -251,6 +257,7 @@
             txbPosSurname.Name = "txbPosSurname";
             txbPosSurname.Size = new Size(27, 25);
             txbPosSurname.TabIndex = 24;
+            txbPosSurname.KeyPress += txbPosSurname_KeyPress;
             // 
             // groupBox1
             // 

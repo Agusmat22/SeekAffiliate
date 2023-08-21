@@ -25,6 +25,7 @@ namespace Libraries
         static List<Company> listCompanies;
         static List<User> listUser;
         static Affiliate affiliate;
+        static User user;
         static Company company;
         static int amountAffiliateLocated;
 
@@ -43,9 +44,10 @@ namespace Libraries
         //Esta funcion lee el archivo csv y lo retorna en una lista
         public static void ChargeAffiliateList(string pathFile,List<int>listPos)
         {
-            
+                
                 using (StreamReader reader = new StreamReader(pathFile))
                 {
+                    listAffiliate.Clear();
                     // Leer y procesar las líneas de datos
                     while (!reader.EndOfStream)
                     {
@@ -117,16 +119,17 @@ namespace Libraries
         }
 
         //REVISAR FALTA TERMINARLA
-        /*
-        public static void ChargerUsers()
+        
+        public static bool ChargerUsers()
         {
-            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileNameUser);
             try
             {
+                string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileNameUser);
+                User newUser;
+
                 if (File.Exists(jsonFilePath))
                 {
                     
-
                     string jsonContent = File.ReadAllText(jsonFilePath);
 
                     JsonDocument doc = JsonDocument.Parse(jsonContent);
@@ -135,35 +138,76 @@ namespace Libraries
                     {
                         foreach (JsonElement element in doc.RootElement.EnumerateArray())
                         {
-                            string userName = element.GetProperty()
+                            string userName = element.GetProperty("GetUser").ToString();
+                            string password = element.GetProperty("GetHashPassword").ToString();
+                            string type = element.GetProperty("GetTypeUser").ToString();
 
+                            
+                            newUser = new User(userName, password, type);
 
-                           
+                            listUser.Add(newUser);
+                          
                         }
 
                     }
                 }
+                else
+                {
+                    newUser = new User("admin", BCrypt.Net.BCrypt.HashPassword("123"),"ADMIN");
+                    CreateJson(newUser);
+                    
+                    
+                }
+
+                return true;
             }
             catch
             {
-
+                
             }
 
+            return false;
         }
-        */
+        
+
+        public static bool ValidateUsers(string userJoined,string passJoin)
+        {
+
+            if (listUser.Count > 0)
+            {
+                foreach (User us in listUser)
+                {
+                    if (us.PassValidation(passJoin) && userJoined.ToLower() == us.GetUser.ToLower())
+                    {
+                        user = us;
+                        return true;
+                    }
+
+
+                } 
+            }
+            return false;
+
+
+        }
         //this method create a json
         public static string CreateJson()
         {
             string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileNameAffiliates);
 
+            if (File.Exists(jsonFilePath))
+            {
+                File.Delete(jsonFilePath);
+            }
+
             // Serializa la lista de afiliados a formato JSON
             string jsonData = JsonConvert.SerializeObject(listAffiliate, Formatting.Indented);
-            
+
             // Escribe el JSON en el archivo
             File.WriteAllText(jsonFilePath, jsonData);
 
             //return $"Se han guardado {listAffiliate.Count} afiliados en {jsonFileName}";
-            return $"Se han guardado {jsonFilePath}";
+            return $"Archivo cargado con exito";
 
         }
 
@@ -188,8 +232,8 @@ namespace Libraries
         //overCharge the function for read User
         public static string CreateJson(User userNew)
         {
-            //Here I addied a new User to list
-            AddUser(userNew);
+            //I add user at list
+            listUser.Add(userNew);
 
             string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileNameUser);
 
@@ -245,7 +289,24 @@ namespace Libraries
             File.WriteAllText(jsonFilePath, updatedJson);
         }
 
-        
+        public static void SaveUserJson()
+        {
+            try
+            {
+                string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileNameUser);
+
+                // Serialize the updated list of companies back to JSON
+                string updatedJson = JsonConvert.SerializeObject(listUser, Formatting.Indented);
+
+                // Write the updated JSON content back to the file
+                File.WriteAllText(jsonFilePath, updatedJson);
+
+            }
+            catch { }
+            
+        }
+
+
 
         public static bool RemoveCompany(string name)
         {
@@ -378,13 +439,18 @@ namespace Libraries
             {
                 foreach (Affiliate affiliate in listAffiliate)
                 {
-
-                    if (Regex.IsMatch(affiliate.GetNumber, data))
+                    if (amountAffiliateLocated < 20)
                     {
-                        listAffiliateLocated.Add(affiliate);
+                        if (Regex.IsMatch(affiliate.GetNumber, $"^{data}"))
+                        {
+                            listAffiliateLocated.Add(affiliate);
+                            amountAffiliateLocated += 1;
+                        }
+                    }
+                    else
+                    {
                         break;
                     }
-
                 }
 
             }
@@ -392,13 +458,18 @@ namespace Libraries
             {
                 foreach (Affiliate affiliate in listAffiliate)
                 {
-                    if (Regex.IsMatch(affiliate.GetDni, data))
+                    if (amountAffiliateLocated < 10)
                     {
-                        listAffiliateLocated.Add(affiliate);
+                        if (Regex.IsMatch(affiliate.GetDni,$"^{data}"))
+                        {
+                            listAffiliateLocated.Add(affiliate);
+                            amountAffiliateLocated += 1;
+                        }
+                    }
+                    else
+                    {
                         break;
                     }
-                    
-
                 }
             }
 
@@ -440,6 +511,7 @@ namespace Libraries
 
         }
         
+        //add affiliate to an list
         public static bool AddAFfiliate(Affiliate af)
         {
             try
@@ -487,24 +559,36 @@ namespace Libraries
 
         }
 
-        //this method calculate amount of entity in total
-        public static int CalculateAmountByEntity(string entity)
+        public static bool RemoveUser(string name)
         {
-            int amount = 0;
-
-            foreach (Affiliate af in listAffiliate)
+            foreach (User us in listUser)
             {
-                if (af.GetEntity == entity)
+                if (us.GetUser == name)
                 {
-                    amount++;
+                    listUser.Remove(us);
+                    SaveUserJson();
+                    return true;
                 }
-
-
             }
+            return false;
 
-            return amount;
         }
 
+        public static User GetUser()
+        {
+            return user;
+        }
 
+        public static List<string> ListNameUsers()
+        {
+            List<string> listName = new List<string>();
+
+            foreach (User use in listUser)
+            {
+                listName.Add(use.GetUser);
+            }
+
+            return listName;
+        }
     }
 }
