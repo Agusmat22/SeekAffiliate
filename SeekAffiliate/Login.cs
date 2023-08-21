@@ -43,6 +43,7 @@ namespace SeekAffiliate
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
+                e.Handled = true;
                 ValidateIncome();  
             }
         }
@@ -71,6 +72,8 @@ namespace SeekAffiliate
                 {
                     //addition of intents
                     attempts++;
+                    this.txbUser.Clear();
+                    this.txbPassword.Clear();
                     MessageBox.Show($"Error ingrese nuevamente la clave. Intento: {attempts}");
 
                 }

@@ -240,6 +240,7 @@
             button3.TabIndex = 29;
             button3.Text = "Cancelar";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button1
             // 

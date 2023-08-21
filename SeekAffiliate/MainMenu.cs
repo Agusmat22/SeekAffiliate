@@ -125,7 +125,7 @@ namespace SeekAffiliate
                 }
                 else if (dialogResult == DialogResult.Cancel)
                 {
-                     MessageBox.Show("Operacion cancelada");
+                    MessageBox.Show("Operacion cancelada");
                 }
                 else
                 {
@@ -136,6 +136,13 @@ namespace SeekAffiliate
             {
                 MessageBox.Show("No tienes acceso");
             }
+        }
+
+        private void acercaDelSistemaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutSystem aboutSystem = new AboutSystem();
+
+            aboutSystem.ShowDialog();
         }
     }
 }

@@ -34,6 +34,7 @@
             searchToolStripMenuItem1 = new ToolStripMenuItem();
             systemToolStripMenuItem = new ToolStripMenuItem();
             chargeFileToolStripMenuItem1 = new ToolStripMenuItem();
+            acercaDelSistemaToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem1 = new ToolStripMenuItem();
             agregarToolStripMenuItem = new ToolStripMenuItem();
             eliminarToolStripMenuItem = new ToolStripMenuItem();
@@ -84,7 +85,7 @@
             // 
             // systemToolStripMenuItem
             // 
-            systemToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { chargeFileToolStripMenuItem1 });
+            systemToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { chargeFileToolStripMenuItem1, acercaDelSistemaToolStripMenuItem });
             systemToolStripMenuItem.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             systemToolStripMenuItem.ForeColor = Color.White;
             systemToolStripMenuItem.Name = "systemToolStripMenuItem";
@@ -95,9 +96,17 @@
             // 
             chargeFileToolStripMenuItem1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             chargeFileToolStripMenuItem1.Name = "chargeFileToolStripMenuItem1";
-            chargeFileToolStripMenuItem1.Size = new Size(175, 24);
+            chargeFileToolStripMenuItem1.Size = new Size(205, 24);
             chargeFileToolStripMenuItem1.Text = "Cargar archivo";
             chargeFileToolStripMenuItem1.Click += chargeFileToolStripMenuItem1_Click;
+            // 
+            // acercaDelSistemaToolStripMenuItem
+            // 
+            acercaDelSistemaToolStripMenuItem.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            acercaDelSistemaToolStripMenuItem.Name = "acercaDelSistemaToolStripMenuItem";
+            acercaDelSistemaToolStripMenuItem.Size = new Size(205, 24);
+            acercaDelSistemaToolStripMenuItem.Text = "Acerca del Sistema";
+            acercaDelSistemaToolStripMenuItem.Click += acercaDelSistemaToolStripMenuItem_Click;
             // 
             // toolStripMenuItem1
             // 
@@ -112,7 +121,7 @@
             // 
             agregarToolStripMenuItem.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            agregarToolStripMenuItem.Size = new Size(180, 24);
+            agregarToolStripMenuItem.Size = new Size(133, 24);
             agregarToolStripMenuItem.Text = "Agregar";
             agregarToolStripMenuItem.Click += agregarToolStripMenuItem_Click;
             // 
@@ -120,7 +129,7 @@
             // 
             eliminarToolStripMenuItem.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            eliminarToolStripMenuItem.Size = new Size(180, 24);
+            eliminarToolStripMenuItem.Size = new Size(133, 24);
             eliminarToolStripMenuItem.Text = "Eliminar";
             eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
             // 
@@ -172,5 +181,6 @@
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem agregarToolStripMenuItem;
         private ToolStripMenuItem eliminarToolStripMenuItem;
+        private ToolStripMenuItem acercaDelSistemaToolStripMenuItem;
     }
 }
