@@ -70,14 +70,15 @@ namespace SeekAffiliate
 
         }
 
-        
 
-        
+
+
         //I indicate to the system that when the user press "enter" automatically seek to the affiliate
         private void txbSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
+                e.Handled = true;
                 FindAffiliates();
             }
         }
@@ -102,7 +103,7 @@ namespace SeekAffiliate
 
             }
             //I onyl allow number and string
-            if (Regex.IsMatch(dataJoin,"^([0-9]*[a-zA-Z]*)*$"))
+            if (Regex.IsMatch(dataJoin, @"^([0-9]*[a-zA-Z]*\s*)*$"))
             {
                 dataGridView1.Rows.Clear();
                 affiliateList = Functions.GetAffiliate(dataJoin, dataType);
@@ -121,9 +122,14 @@ namespace SeekAffiliate
                 //here I reset the textBox
                 this.txbSearch.Text = "";
             }
-            
-            
-            
+
+
+
+        }
+
+        private void Search_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
