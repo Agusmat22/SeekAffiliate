@@ -103,7 +103,7 @@ namespace SeekAffiliate
 
             }
             //I onyl allow number and string
-            if (Regex.IsMatch(dataJoin, @"^([0-9]*[a-zA-Z]*\s*)*$"))
+            if (Regex.IsMatch(dataJoin, @"^([0-9]*ñ*[a-zA-Z]*\s*)*$"))
             {
                 dataGridView1.Rows.Clear();
                 affiliateList = Functions.GetAffiliate(dataJoin, dataType);
